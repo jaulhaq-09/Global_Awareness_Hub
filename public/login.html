@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Login - Mental Health Hub</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(135deg, rgba(168, 237, 234, 0.18), rgba(254, 214, 227, 0.25)),
+    url("./login.jpeg") center/cover fixed no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* <-- center horizontally */
+  padding: 1.5rem;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;  /* <-- center card inside wrapper */
+}
+
+
+    .login-card {
+      max-width: 380px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.93);
+      border-radius: 1.75rem;
+      padding: 1.9rem 2.1rem 2.2rem;
+      box-shadow:
+        0 26px 70px rgba(15, 23, 42, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(187, 247, 208, 0.9);
+      backdrop-filter: blur(20px);
+      animation: floatIn 0.6s ease-out forwards;
+      transform-origin: center;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(26px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .login-btn {
+      position: relative;
+      overflow: hidden;
+      background-image: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #ffffff;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 0.8rem 1rem;
+      box-shadow: 0 14px 32px rgba(22, 163, 74, 0.55);
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background-position 0.25s ease;
+      background-size: 160% 160%;
+      background-position: 0% 50%;
+      border: none;
+    }
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(22, 163, 74, 0.6);
+      background-position: 100% 50%;
+    }
+    .login-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 22px rgba(22, 163, 74, 0.45);
+    }
+    .login-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.35), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .login-btn:hover::before {
+      opacity: 1;
+    }
+
+    .field-group {
+      margin-bottom: 0.95rem;
+    }
+
+    .field-input {
+      width: 100%;
+      border-radius: 999px;
+      padding: 0.8rem 1.1rem;
+      border: 2px solid rgba(148, 163, 184, 0.45);
+      background-color: rgba(255, 255, 255, 0.98);
+      transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease, transform 0.1s ease;
+      outline: none;
+      font-size: 0.95rem;
+    }
+    .field-input::placeholder {
+      color: #9ca3af;
+    }
+    .field-input:focus {
+      border-color: #22c55e;
+      box-shadow:
+        0 0 0 1px rgba(34, 197, 94, 0.1),
+        0 0 0 4px rgba(34, 197, 94, 0.18);
+      background-color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .field-input:hover {
+      border-color: rgba(34, 197, 94, 0.5);
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.07);
+      color: #047857;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        justify-content: center;
+      }
+      .login-wrapper {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem;
+        align-items: stretch;
+      }
+      .login-wrapper {
+        justify-content: center;
+      }
+      .login-card {
+        margin: 2.5rem auto;
+        padding: 1.6rem 1.3rem 1.9rem;
+        border-radius: 1.4rem;
+        max-width: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-wrapper">
+    <div class="login-card">
+      <!-- Header -->
+      <header class="mb-6">
+        <div class="flex items-center justify-between mb-3 text-[0.7rem]">
+          <span class="pill-badge">
+            <span class="text-xs">●</span>
+            Calm Space
+          </span>
+          <span class="text-gray-400">Secure • Private</span>
+        </div>
+        <div class="text-center">
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-green-700 leading-snug">
+            Mental Health Hub
+          </h1>
+          <p class="text-gray-600 mt-2 text-xs sm:text-sm">
+            Sign in to access your personalized wellness tools.
+          </p>
+        </div>
+      </header>
+
+      <!-- LOGIN FORM -->
+      <form id="loginForm" class="space-y-4">
+        <div class="field-group">
+          <label class="block text-[0.75rem] font-semibold text-gray-700 mb-1">
+            <span class="inline-flex items-center gap-1">
+              <span class="text-green-500">✉</span>
+              Email Address
+            </span>
+          </label>
+          <input
+            id="loginEmail"
+            type="email"
+            required
+            class="field-input"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div class="field-group">
+          <label class="block text-[0.75rem] font-semibold text-gray-700 mb-1">
+            <span class="inline-flex items-center gap-1">
+              <span class="text-green-500">🔒</span>
+              Password
+            </span>
+          </label>
+          <input
+            id="loginPassword"
+            type="password"
+            required
+            class="field-input"
+            placeholder="Enter your password"
+          />
+        </div>
+
+        <p id="loginError" class="text-red-600 text-xs font-semibold hidden text-center bg-red-50 py-2 px-3 rounded-xl"></p>
+
+        <button
+          type="submit"
+          class="login-btn w-full flex items-center justify-center text-sm sm:text-base gap-2"
+        >
+          <span class="text-lg">⮕</span>
+          <span>Log In</span>
+        </button>
+      </form>
+
+      <!-- SIGNUP FORM -->
+      <form id="signupForm" class="space-y-4 hidden mt-6">
+        <div class="field-group">
+          <label class="block text-[0.75rem] font-semibold text-gray-700 mb-1">
+            <span class="inline-flex items-center gap-1">
+              <span class="text-green-500">✉</span>
+              Email Address
+            </span>
+          </label>
+          <input
+            id="signupEmail"
+            type="email"
+            required
+            class="field-input"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div class="field-group">
+          <label class="block text-[0.75rem] font-semibold text-gray-700 mb-1">
+            <span class="inline-flex items-center gap-1">
+              <span class="text-green-500">🔒</span>
+              Password
+            </span>
+          </label>
+          <input
+            id="signupPassword"
+            type="password"
+            required
+            class="field-input"
+            placeholder="Create a strong password"
+          />
+        </div>
+
+        <div class="field-group">
+          <label class="block text-[0.75rem] font-semibold text-gray-700 mb-1">
+            <span class="inline-flex items-center gap-1">
+              <span class="text-green-500">🔒</span>
+              Confirm Password
+            </span>
+          </label>
+          <input
+            id="signupConfirmPassword"
+            type="password"
+            required
+            class="field-input"
+            placeholder="Re-enter password"
+          />
+        </div>
+
+        <p id="signupError" class="text-red-600 text-xs font-semibold hidden text-center bg-red-50 py-2 px-3 rounded-xl"></p>
+
+        <button
+          type="submit"
+          class="login-btn w-full flex items-center justify-center text-sm sm:text-base gap-2"
+        >
+          <span>Create Account</span>
+        </button>
+      </form>
+
+      <!-- Toggle -->
+      <p class="mt-6 text-center text-gray-600 text-xs sm:text-sm">
+        <span id="toggleText">Don't have an account?</span>
+        <button id="toggleBtn" class="font-semibold text-green-600 hover:text-green-700">
+          <span id="toggleBtnText">Sign up here</span>
+        </button>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // hash password
+    async function hashPassword(password) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const defaultAdminHash = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
+    if (!users.some(u => u.role === "admin")) {
+      users.push({ email: "admin@mentalhealthhub.com", passwordHash: defaultAdminHash, role: "admin" });
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+    const toggleBtn = document.getElementById("toggleBtn");
+    const toggleText = document.getElementById("toggleText");
+    const toggleBtnText = document.getElementById("toggleBtnText");
+
+    const loginEmail = document.getElementById("loginEmail");
+    const loginPassword = document.getElementById("loginPassword");
+    const loginError = document.getElementById("loginError");
+
+    const signupEmail = document.getElementById("signupEmail");
+    const signupPassword = document.getElementById("signupPassword");
+    const signupConfirmPassword = document.getElementById("signupConfirmPassword");
+    const signupError = document.getElementById("signupError");
+
+    // toggle login / signup
+    toggleBtn.addEventListener("click", () => {
+      const loginHidden = loginForm.classList.contains("hidden");
+      if (loginHidden) {
+        signupForm.classList.add("hidden");
+        loginForm.classList.remove("hidden");
+        toggleText.textContent = "Don't have an account?";
+        toggleBtnText.textContent = "Sign up here";
+      } else {
+        loginForm.classList.add("hidden");
+        signupForm.classList.remove("hidden");
+        toggleText.textContent = "Already have an account?";
+        toggleBtnText.textContent = "Log in here";
+      }
+    });
+
+    // login handler
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      loginError.classList.add("hidden");
+
+      const hash = await hashPassword(loginPassword.value);
+      const user = users.find(
+        u => u.email === loginEmail.value && u.passwordHash === hash
+      );
+
+      if (!user) {
+        loginError.textContent = "Sign Up First!";
+        loginError.classList.remove("hidden");
+        return;
+      }
+
+      localStorage.setItem("currentUserEmail", user.email);
+      localStorage.setItem("currentUserRole", user.role);
+
+      if (user.role === "admin") {
+        window.location.href = "adminlogin.html";
+      } else {
+        window.location.href = "second.html";
+      }
+    });
+
+    // signup handler
+    signupForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      signupError.classList.add("hidden");
+
+      const password = signupPassword.value;
+      const strongPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+      if (!strongPassword.test(password)) {
+        signupError.textContent =
+          "Your password is not valid! (min 8 characters & must contain letters + numbers)";
+        signupError.classList.remove("hidden");
+        return;
+      }
+
+      if (password !== signupConfirmPassword.value) {
+        signupError.textContent = "Passwords do not match!";
+        signupError.classList.remove("hidden");
+        return;
+      }
+
+      if (users.some(u => u.email === signupEmail.value)) {
+        signupError.textContent = "This email is already registered!";
+        signupError.classList.remove("hidden");
+        return;
+      }
+
+      const hash = await hashPassword(password);
+      users.push({
+        email: signupEmail.value,
+        passwordHash: hash,
+        role: "user"
+      });
+
+      localStorage.setItem("users", JSON.stringify(users));
+      window.location.href = "second.html";
+    });
+  </script>
+</body>
+</html>

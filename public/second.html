@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Awareness Hub - Making a Difference</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        /* Global Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --emerald-50: #ecfdf5;
+            --emerald-100: #d1fae5;
+            --emerald-200: #a7f3d0;
+            --emerald-300: #6ee7b7;
+            --emerald-400: #34d399;
+            --emerald-500: #10b981;
+            --emerald-600: #059669;
+            --emerald-700: #047857;
+            --emerald-800: #065f46;
+            --emerald-900: #064e3b;
+            --green-50: #f0fdf4;
+            --green-100: #dcfce7;
+            --green-500: #22c55e;
+            --green-600: #16a34a;
+            --teal-50: #f0fdfa;
+            --teal-100: #ccfbf1;
+            --teal-500: #14b8a6;
+            --teal-600: #0d9488;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: linear-gradient(135deg, var(--emerald-50) 0%, var(--green-50) 50%, var(--teal-50) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background Overlay */
+        .background-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1689606646730-312a90287c99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlYXJ0aCUyMGdyZWVuJTIwbmF0dXJlJTIwc3VzdGFpbmFiaWxpdHl8ZW58MXx8fHwxNzY0NjE0ODUzfDA&ixlib=rb-4.1.0&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(to right, var(--emerald-600), var(--green-600), var(--teal-600));
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            filter: blur(60px);
+        }
+
+        .circle-1 {
+            width: 256px;
+            height: 256px;
+            top: -80px;
+            left: -80px;
+            animation: float1 20s ease-in-out infinite;
+        }
+
+        .circle-2 {
+            width: 384px;
+            height: 384px;
+            bottom: -80px;
+            right: -80px;
+            animation: float2 15s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(90deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: scale(1.2) rotate(90deg); }
+            50% { transform: scale(1) rotate(0deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 64px 24px;
+            text-align: center;
+        }
+
+        .hero-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .hero-icons i {
+            font-size: 48px;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        .hero-icons:nth-child(2) {
+            font-size: 40px;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1) opacity: 1; }
+            50% { transform: scale(1.1) opacity: 0.8; }
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--emerald-50);
+            max-width: 672px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 20;
+            margin-top: -32px;
+        }
+
+        .search-wrapper {
+            position: relative;
+            animation: fadeInUp 0.6s ease-out 0.8s both;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--emerald-600);
+            font-size: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 20px 24px 20px 64px;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border: 2px solid var(--emerald-100);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--emerald-500);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 64px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out 1s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--emerald-900);
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: var(--emerald-700);
+            max-width: 672px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            opacity: 0;
+            animation: fadeInUpCard 0.5s ease-out both;
+            position: relative;
+        }
+
+        .category-card:nth-child(1) { animation-delay: 1.1s; }
+        .category-card:nth-child(2) { animation-delay: 1.2s; }
+        .category-card:nth-child(3) { animation-delay: 1.3s; }
+        .category-card:nth-child(4) { animation-delay: 1.4s; }
+        .category-card:nth-child(5) { animation-delay: 1.5s; }
+        .category-card:nth-child(6) { animation-delay: 1.6s; }
+        .category-card:nth-child(7) { animation-delay: 1.7s; }
+        .category-card:nth-child(8) { animation-delay: 1.8s; }
+        .category-card:nth-child(9) { animation-delay: 1.9s; }
+        .category-card:nth-child(10) { animation-delay: 2.0s; }
+        .category-card:nth-child(11) { animation-delay: 2.1s; }
+
+        @keyframes fadeInUpCard {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: var(--emerald-300);
+        }
+
+        .category-header {
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-animation {
+            position: absolute;
+            width: 96px;
+            height: 96px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            top: -24px;
+            right: -24px;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+
+        .category-icon {
+            font-size: 48px;
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Gradient Classes */
+        .gradient-green { background: linear-gradient(to right, #22c55e, #059669); }
+        .gradient-blue { background: linear-gradient(to right, #3b82f6, #4f46e5); }
+        .gradient-pink { background: linear-gradient(to right, #ec4899, #e11d48); }
+        .gradient-orange { background: linear-gradient(to right, #eab308, #f97316); }
+        .gradient-cyan { background: linear-gradient(to right, #06b6d4, #2563eb); }
+        .gradient-sky { background: linear-gradient(to right, #0ea5e9, #2563eb); }
+        .gradient-purple { background: linear-gradient(to right, #a855f7, #7c3aed); }
+        .gradient-emerald { background: linear-gradient(to right, #10b981, #059669); }
+        .gradient-red { background: linear-gradient(to right, #ef4444, #ec4899); }
+        .gradient-teal { background: linear-gradient(to right, #14b8a6, #06b6d4); }
+        .gradient-red-orange { background: linear-gradient(to right, #f97316, #ef4444); }
+
+        .category-content {
+            padding: 24px;
+        }
+
+        .category-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .category-card:hover .category-title {
+            color: var(--emerald-600);
+        }
+
+        .category-description {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        /* Learn More Link - ONLY clickable element */
+        .category-link {
+            display: flex;
+            align-items: center;
+            color: #1FA463;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+
+        .category-card:hover .category-link {
+            color: var(--emerald-700);
+        }
+
+        .arrow-animate {
+            margin-left: 8px;
+            animation: arrowMove 1.5s ease-in-out infinite;
+        }
+
+        @keyframes arrowMove {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        /* Prevent card click - only link clickable */
+        .category-card * {
+            pointer-events: none;
+        }
+
+        .category-link,
+        .category-link * {
+            pointer-events: auto;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--emerald-600);
+            font-size: 18px;
+            display: none;
+        }
+
+        /* Quotes Section */
+        .quotes-section {
+            padding: 64px 0;
+            background: linear-gradient(to right, var(--emerald-100), var(--green-100), var(--teal-100));
+            overflow: hidden;
+        }
+
+        .quotes-carousel-wrapper {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .quotes-carousel {
+            display: flex;
+            gap: 32px;
+            animation: scrollQuotes 60s linear infinite;
+            width: max-content;
+        }
+
+        @keyframes scrollQuotes {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .quote-card {
+            flex-shrink: 0;
+            width: 400px;
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--emerald-500);
+        }
+
+        .quote-text {
+            font-size: 16px;
+            color: var(--gray-700);
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            font-size: 14px;
+            color: var(--emerald-600);
+            font-weight: 600;
+        }
+
+        /* Team Section */
+        .team-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 64px 24px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 64px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUpCard 0.5s ease-out both;
+        }
+
+        .profile-card:nth-child(1) { animation-delay: 0.1s; }
+        .profile-card:nth-child(2) { animation-delay: 0.2s; }
+        .profile-card:nth-child(3) { animation-delay: 0.3s; }
+        .profile-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .profile-image {
+            position: relative;
+            height: 192px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--emerald-400), var(--teal-500));
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-card:hover .profile-image img {
+            transform: scale(1.1);
+        }
+
+        .profile-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+        }
+
+        .profile-content {
+            padding: 24px;
+        }
+
+        .profile-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .profile-role {
+            font-size: 14px;
+            color: var(--emerald-600);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .profile-description {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .profile-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--emerald-100);
+            color: var(--emerald-600);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--emerald-600);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 24px;
+            border-top: 1px solid var(--emerald-200);
+            color: var(--emerald-700);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 32px; }
+            .hero-description { font-size: 16px; }
+            .hero-icons i { font-size: 32px; }
+            .hero-icons:nth-child(2) { font-size: 28px; }
+            .section-title { font-size: 28px; }
+            .categories-grid { grid-template-columns: 1fr; }
+            .quote-card { width: 300px; }
+            .team-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content { padding: 48px 16px; }
+            .hero-icons { gap: 16px; }
+            .search-input { padding: 16px 16px 16px 56px; }
+            .categories-section { padding: 48px 16px; }
+            .quote-card { width: 280px; padding: 16px; }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Overlay -->
+    <div class="background-overlay"></div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-background">
+                <div class="floating-circle circle-1"></div>
+                <div class="floating-circle circle-2"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-icons">
+                    <i class="fas fa-globe icon-pulse"></i>
+                    <i class="fas fa-heart icon-pulse"></i>
+                    <i class="fas fa-leaf icon-pulse"></i>
+                </div>
+                <h1 class="hero-title">Global Awareness Hub</h1>
+                <p class="hero-description">Empowering positive change through knowledge and action. Explore critical global issues and become part of the solution.</p>
+            </div>
+        </section>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search categories..." autocomplete="off">
+            </div>
+        </div>
+
+        <!-- Categories Section -->
+        <section class="categories-section">
+            <div class="section-header">
+                <h2 class="section-title">Explore Categories</h2>
+                <p class="section-description">Discover critical global issues and learn how you can make a difference</p>
+            </div>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Category 1 -->
+                <div class="category-card" data-category="afforestation" data-route="afforestation">
+                    <div class="category-header gradient-green">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-tree category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Afforestation / Deforestation</h3>
+                        <p class="category-description">Protecting our forests and promoting green cover for a sustainable future</p>
+                        <div class="category-link" data-route="affdeff.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="category-card" data-category="cyber security" data-route="cyber-security">
+                    <div class="category-header gradient-blue">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-shield-alt category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Cyber Security</h3>
+                        <p class="category-description">Safeguarding digital privacy and protecting against online threats</p>
+                        <div class="category-link" data-route="cyber.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="category-card" data-category="women empowerment" data-route="women-empowerment">
+                    <div class="category-header gradient-pink">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-users category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Women Empowerment</h3>
+                        <p class="category-description">Advancing equality, rights, and opportunities for women worldwide</p>
+                        <div class="category-link" data-route="women.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="category-card" data-category="child cruelty" data-route="child-cruelty">
+                    <div class="category-header gradient-orange">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-baby category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Child Cruelty</h3>
+                        <p class="category-description">Addressing child cruelty toward parents to ensure safety and family well-being.</p>
+                        <div class="category-link" data-route="parents.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="category-card" data-category="plastic pollution" data-route="plastic-pollution">
+                    <div class="category-header gradient-cyan">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-trash category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Plastic Pollution</h3>
+                        <p class="category-description">Reducing plastic waste and promoting sustainable alternatives</p>
+                        <div class="category-link" data-route="plastic.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="category-card" data-category="water conservation" data-route="water-conservation">
+                    <div class="category-header gradient-sky">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-tint category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Water Conservation</h3>
+                        <p class="category-description">Preserving our most precious resource for future generations</p>
+                        <div class="category-link" data-route="water.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 7 -->
+                <div class="category-card" data-category="mental health" data-route="mental-health">
+                    <div class="category-header gradient-purple">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-brain category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Mental Health</h3>
+                        <p class="category-description">Breaking stigma and promoting mental wellness for all</p>
+                        <div class="category-link" data-route="mental.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 8 -->
+                <div class="category-card" data-category="financial literacy" data-route="financial-literacy">
+                    <div class="category-header gradient-emerald">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-dollar-sign category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Financial Literacy</h3>
+                        <p class="category-description">Empowering individuals with knowledge for financial independence</p>
+                        <div class="category-link" data-route="financial.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 9 -->
+                <div class="category-card" data-category="digital addiction" data-route="digital-addiction">
+                    <div class="category-header gradient-red">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-mobile-alt category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Digital Addiction</h3>
+                        <p class="category-description">Understanding and managing our relationship with technology</p>
+                        <div class="category-link" data-route="digital.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 10 -->
+                <div class="category-card" data-category="climate change" data-route="climate-change">
+                    <div class="category-header gradient-teal">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-cloud-rain category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Climate Change</h3>
+                        <p class="category-description">Taking action against global warming and environmental crisis</p>
+                        <div class="category-link" data-route="climate.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 11 -->
+                <div class="category-card" data-category="animal cruelty" data-route="animal-cruelty">
+                    <div class="category-header gradient-red-orange">
+                        <div class="header-animation"></div>
+                        <i class="fas fa-paw category-icon"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">Animal Cruelty</h3>
+                        <p class="category-description">Protecting animal rights and preventing abuse and exploitation</p>
+                        <div class="category-link" data-route="animal.html">
+                            <span style="color: #1FA463; text-decoration: none; font-weight: 500; cursor: pointer;">Learn More</span>
+                            <i class="fas fa-arrow-right arrow-animate"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No categories found matching your search</p>
+            </div>
+        </section>
+
+        <!-- Quotes Carousel -->
+        <section class="quotes-section">
+            <div class="section-header">
+                <h2 class="section-title">Words of Wisdom</h2>
+                <p class="section-description">Inspiring quotes to fuel positive change</p>
+            </div>
+            <div class="quotes-carousel-wrapper">
+                <div class="quotes-carousel" id="quotesCarousel">
+                    <!-- Quotes will be dynamically generated -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="section-header">
+                <h2 class="section-title">Our Team</h2>
+                <p class="section-description">Meet the passionate individuals driving change and making a difference</p>
+            </div>
+            <div class="team-grid">
+                <!-- Profile 1 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Sarah Anderson">
+                        <div class="profile-overlay"></div>
+                    </div>
+                    <div class="profile-content">
+                        <h3 class="profile-name">Jaul Haq</h3>
+                        <p class="profile-role">Student at BMSIT</p>
+                        <p class="profile-description">|Computer Science & Engineering|</p>
+                        <div class="profile-links">
+                            <a href="https://www.linkedin.com/in/jaul-haq-72a133389/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a> 
+                            <a href="mailto:contact@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                            <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile 2 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Michael Chen">
+                        <div class="profile-overlay"></div>
+                    </div>
+                    <div class="profile-content">
+                        <h3 class="profile-name">Michael Chen</h3>
+                        <p class="profile-role">Cyber Security Expert</p>
+                        <p class="profile-description">Protecting digital spaces and educating on online safety</p>
+                        <div class="profile-links">
+                            <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:contact@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                            <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile 3 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Priya Sharma">
+                        <div class="profile-overlay"></div>
+                    </div>
+                    <div class="profile-content">
+                        <h3 class="profile-name">Priya Sharma</h3>
+                        <p class="profile-role">Social Impact Director</p>
+                        <p class="profile-description">Championing women's rights and child welfare programs</p>
+                        <div class="profile-links">
+                            <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:contact@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                            <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile 4 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="James Rodriguez">
+                        <div class="profile-overlay"></div>
+                    </div>
+                    <div class="profile-content">
+                        <h3 class="profile-name">James Rodriguez</h3>
+                        <p class="profile-role">Sustainability Consultant</p>
+                        <p class="profile-description">Driving corporate responsibility and environmental awareness</p>
+                        <div class="profile-links">
+                            <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:contact@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                            <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Global Awareness Hub. All rights reserved. Making the world a better place, one awareness at a time.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Quotes Data
+        const quotes = [
+            { text: "The earth does not belong to us. We belong to the earth.", author: "Chief Seattle" },
+            { text: "In a world where you can be anything, be kind.", author: "Anonymous" },
+            { text: "The greatest threat to our planet is the belief that someone else will save it.", author: "Robert Swan" },
+            { text: "Empowered women empower women.", author: "Anonymous" },
+            { text: "Children are not things to be molded, but people to be unfolded.", author: "Jess Lair" },
+            { text: "We won't have a society if we destroy the environment.", author: "Margaret Mead" },
+            { text: "Mental health is not a destination, but a process.", author: "Noam Shpancer" },
+            { text: "Financial freedom is available to those who learn about it and work for it.", author: "Robert Kiyosaki" },
+            { text: "Technology is a useful servant but a dangerous master.", author: "Christian Lous Lange" },
+            { text: "Climate change is the greatest threat to human rights in the 21st century.", author: "Mary Robinson" },
+            { text: "The greatness of a nation can be judged by the way its animals are treated.", author: "Mahatma Gandhi" },
+            { text: "We do not inherit the earth from our ancestors; we borrow it from our children.", author: "Native American Proverb" },
+            { text: "Security is not a product, but a process.", author: "Bruce Schneier" },
+            { text: "When women support each other, incredible things happen.", author: "Anonymous" },
+            { text: "Every child deserves a champion.", author: "Rita Pierson" },
+            { text: "Plastic pollution is a global crisis we can no longer ignore.", author: "Anonymous" },
+            { text: "Water is life's matter and matrix, mother and medium.", author: "Albert Szent-Gyorgyi" },
+            { text: "Your mental health is a priority, not an option.", author: "Anonymous" },
+            { text: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
+            { text: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" }
+        ];
+
+        // Initialize Quotes Carousel
+        function initializeQuotes() {
+            const quotesCarousel = document.getElementById('quotesCarousel');
+            // Duplicate quotes for seamless loop
+            const duplicatedQuotes = [...quotes, ...quotes];
+            duplicatedQuotes.forEach(quote => {
+                const quoteCard = document.createElement('div');
+                quoteCard.className = 'quote-card';
+                quoteCard.innerHTML = `
+                    <p class="quote-text">${quote.text}</p>
+                    <p class="quote-author">${quote.author}</p>
+                `;
+                quotesCarousel.appendChild(quoteCard);
+            });
+        }
+
+        // Search Functionality
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryCards = document.querySelectorAll('.category-card');
+            const noResults = document.getElementById('noResults');
+
+            searchInput.addEventListener('input', function(e) {
+                const searchQuery = e.target.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                categoryCards.forEach(card => {
+                    const category = card.getAttribute('data-category').toLowerCase();
+                    const title = card.querySelector('.category-title').textContent.toLowerCase();
+                    const description = card.querySelector('.category-description').textContent.toLowerCase();
+
+                    if (category.includes(searchQuery) || title.includes(searchQuery) || description.includes(searchQuery)) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0 && searchQuery !== '') {
+                    noResults.style.display = 'block';
+                    noResults.querySelector('p').textContent = `No categories found matching "${e.target.value}"`;
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        }
+
+        // ONLY Learn More link clickable - NO card click functionality
+        function initializeCategoryLinks() {
+            const learnMoreLinks = document.querySelectorAll('.category-link');
+            
+            learnMoreLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent any parent click
+                    const route = this.getAttribute('data-route') || this.closest('.category-card').getAttribute('data-route');
+                    if (route) {
+                        // Visual feedback
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                            window.location.href = route;
+                        }, 200);
+                    }
+                });
+            });
+        }
+
+        // Pause carousel on hover
+        function initializeCarouselControls() {
+            const carousel = document.getElementById('quotesCarousel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', function() {
+                    this.style.animationPlayState = 'paused';
+                });
+                carousel.addEventListener('mouseleave', function() {
+                    this.style.animationPlayState = 'running';
+                });
+            }
+        }
+
+        // Add keyboard navigation support
+        function initializeKeyboardNavigation() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryCards = document.querySelectorAll('.category-card');
+            const learnMoreLinks = document.querySelectorAll('.category-link');
+
+            document.addEventListener('keydown', function(e) {
+                // Press / to focus search
+                if (e.key === '/' && document.activeElement !== searchInput) {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+                // Press Escape to clear search
+                if (e.key === 'Escape' && document.activeElement === searchInput) {
+                    searchInput.value = '';
+                    searchInput.dispatchEvent(new Event('input'));
+                    searchInput.blur();
+                }
+            });
+
+            // Make Learn More links keyboard accessible
+            learnMoreLinks.forEach((link, index) => {
+                link.setAttribute('tabindex', '0');
+                link.setAttribute('role', 'button');
+                link.setAttribute('aria-label', `Learn more about ${link.closest('.category-card').querySelector('.category-title').textContent}`);
+                
+                link.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        }
+
+        // Add scroll progress indicator
+        function addScrollProgressIndicator() {
+            const progressBar = document.createElement('div');
+            progressBar.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 4px;
+                background: linear-gradient(to right, #10b981, #22c55e, #14b8a6);
+                width: 0%;
+                z-index: 9999;
+                transition: width 0.1s ease;
+            `;
+            document.body.appendChild(progressBar);
+
+            window.addEventListener('scroll', () => {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.pageYOffset / windowHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('ðŸŒ Global Awareness Hub - Initializing...');
+            
+            // Initialize all features
+            initializeQuotes();
+            initializeSearch();
+            initializeCategoryLinks();
+            initializeCarouselControls();
+            initializeKeyboardNavigation();
+            addScrollProgressIndicator();
+            
+            console.log('âœ… Global Awareness Hub - Ready!');
+            console.log('%cðŸŽ¯ Keyboard Shortcuts: / to search, Escape to clear', 'font-size: 20px; font-weight: bold; color: #059669');
+            console.log('%cðŸ’¡ Click ONLY "Learn More" + arrow to navigate', 'font-size: 12px; color: #047857');
+        });
+    </script>
+</body>
+</html>

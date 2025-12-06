@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Awareness Hub - Making a Difference</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET & ROOT VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --emerald-50: #ecfdf5;
+            --emerald-100: #d1fae5;
+            --emerald-200: #a7f3d0;
+            --emerald-600: #059669;
+            --emerald-700: #047857;
+            --green-50: #f0fdf4;
+            --green-100: #dcfce7;
+            --teal-50: #f0fdfa;
+            --teal-100: #ccfbf1;
+            --gray-700: #374151;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(rgba(5, 150, 105, 0.1), rgba(5, 150, 105, 0.1)), 
+                              url("./back.avif");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* LOADING SCREEN */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--emerald-50), var(--teal-50));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--emerald-100);
+            border-top: 4px solid var(--emerald-700);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* HEADER */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--emerald-200);
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--emerald-700);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.3);
+        }
+
+        .header-logo:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 16px 40px rgba(5, 150, 105, 0.5);
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--emerald-700), var(--emerald-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .header-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--emerald-600), var(--emerald-700));
+            color: white;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .header-btn:hover::before {
+            left: 100%;
+        }
+
+        .header-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 80px 24px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.95);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--emerald-700);
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 24px;
+            text-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: clamp(18px, 3vw, 24px);
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--emerald-600), var(--emerald-700));
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 12px 40px rgba(5, 150, 105, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(5, 150, 105, 0.6);
+        }
+
+        .cta-secondary {
+            padding: 18px 40px;
+            background: rgba(255,255,255,0.95);
+            color: var(--emerald-700);
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+        }
+
+        /* STATS SECTION */
+        .stats-section {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 60px 24px;
+            margin: 40px 0;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-number {
+            font-size: clamp(32px, 8vw, 56px);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--emerald-700), var(--emerald-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: var(--gray-700);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* QUOTES SECTION - SLOWER SPEED */
+        .quotes-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--emerald-100), var(--green-100), var(--teal-100));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quotes-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--emerald-600), transparent);
+        }
+
+        .quotes-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .quotes-track {
+            display: flex;
+            gap: 24px;
+            width: max-content;
+            animation: slideQuotes 80s linear infinite; /* MUCH SLOWER - 80s */
+        }
+
+        @keyframes slideQuotes {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .quote-box {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 24px 28px;
+            width: 380px;
+            min-height: 120px;
+            border-left: 6px solid var(--emerald-600);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 64px;
+            line-height: 1;
+            font-weight: 900;
+            color: var(--emerald-600);
+            position: absolute;
+            top: 12px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--gray-700);
+            font-weight: 500;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--emerald-700);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ABOUT SECTION */
+        #about {
+            display: none;
+        }
+
+        .about-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 60px 40px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-left: 8px solid var(--emerald-600);
+            transform: translateY(40px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .about-section.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .about-title {
+            font-size: 40px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--emerald-700), var(--emerald-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 20px;
+            color: var(--gray-700);
+            margin-bottom: 24px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* TOPICS SECTION */
+        .topics-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 24px;
+        }
+
+        .topics-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--emerald-700);
+            font-weight: 800;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .topic-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 16px 50px rgba(0,0,0,0.12);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-top: 4px solid var(--emerald-600);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--emerald-600), var(--emerald-700), var(--emerald-600));
+        }
+
+        .topic-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+        }
+
+        .topic-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--emerald-600), var(--emerald-700));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4);
+        }
+
+        .topic-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--emerald-700);
+            margin-bottom: 12px;
+        }
+
+        /* TEAM SECTION */
+        .team-section {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 0 24px 60px;
+        }
+
+        .team-title {
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--emerald-700);
+            font-weight: 900;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .member-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--emerald-600), var(--teal-100));
+        }
+
+        .member-card:hover {
+            transform: translateY(-16px);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+        }
+
+        .member-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--emerald-100);
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .member-card:hover img {
+            border-color: var(--emerald-600);
+            transform: scale(1.1);
+        }
+
+        .member-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--emerald-700);
+            margin-bottom: 8px;
+        }
+
+        .member-role {
+            font-size: 16px;
+            color: var(--gray-700);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .linkedin-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #0a66c2, #004182);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(10, 102, 194, 0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, var(--gray-900), var(--gray-700));
+            color: white;
+            text-align: center;
+            padding: 60px 24px 40px;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--emerald-200);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 20px;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .header-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .quote-box {
+                width: 300px;
+                padding: 20px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        /* SCROLL ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div style="font-size: 18px; font-weight: 600; color: var(--emerald-700);">Loading Global Awareness Hub...</div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header fade-in">
+        <div class="logo-container">
+            <img class="header-logo" src="logo.jpg" alt="GAH Logo">
+            <div class="header-title">Global Awareness Hub</div>
+        </div>
+
+        <div class="header-buttons">
+            <button class="header-btn" onclick="showAbout()">
+                <i class="fas fa-info-circle"></i> About
+            </button>
+            <button class="header-btn" onclick="scrollToTopics()">
+                <i class="fas fa-globe"></i> Topics
+            </button>
+            <button class="header-btn" onclick="window.location.href='login.html'">
+                <i class="fas fa-user"></i> User Login
+            </button>
+            <button class="header-btn" onclick="window.location.href='adminlogin.html'">
+                <i class="fas fa-user-shield"></i> Admin Login
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-crown" style="color: var(--emerald-700);"></i>
+                Making a Difference, One Awareness at a Time
+            </div>
+            <h1 class="hero-title">Empowering Global Change</h1>
+            <p class="hero-description">
+                Uniting communities through knowledge, inspiring action for climate, equality, security, 
+                and sustainability. Your platform for meaningful global impact.
+            </p>
+            <div class="cta-buttons">
+                <button class="cta-primary" onclick="scrollToTopics()">
+                    <i class="fas fa-rocket"></i> Explore Topics
+                </button>
+                <button class="cta-secondary" onclick="showAbout()">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section fade-in">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number" data-target="500K">0</span>
+                <div class="stat-label">People Reached</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="150">0</span>
+                <div class="stat-label">Topics Covered</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="50K">0</span>
+                <div class="stat-label">Actions Taken</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="98">0</span>
+                <div class="stat-label">% Impact</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTES SECTION -->
+    <section class="quotes-section" id="quotesZone">
+        <div class="quotes-wrapper">
+            <div class="quotes-track" id="quotesTrack">
+                <!-- Quotes duplicated for seamless loop -->
+                <div class="quote-box">
+                    <div class="quote-text">Be the change you wish to see in the world.</div>
+                    <div class="quote-author">— Mahatma Gandhi</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">Small acts multiplied can change the world.</div>
+                    <div class="quote-author">— Howard Zinn</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">The earth is what we all have in common.</div>
+                    <div class="quote-author">— Wendell Berry</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">Awareness is the first step toward change.</div>
+                    <div class="quote-author">— Unknown</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">Education is the passport to the future.</div>
+                    <div class="quote-author">— Malcolm X</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">The future depends on what we do today.</div>
+                    <div class="quote-author">— Mahatma Gandhi</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">Heal the world — make it a better place.</div>
+                    <div class="quote-author">— Michael Jackson</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">Progress is impossible without change.</div>
+                    <div class="quote-author">— George Bernard Shaw</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">Knowledge is power. Knowledge shared is power multiplied.</div>
+                    <div class="quote-author">— Robert Noyce</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">What you do makes a difference, and you have to decide what kind of difference you want to make.</div>
+                    <div class="quote-author">— Jane Goodall</div>
+                </div>
+                <!-- Duplicate set for infinite loop -->
+                <div class="quote-box">
+                    <div class="quote-text">Be the change you wish to see in the world.</div>
+                    <div class="quote-author">— Mahatma Gandhi</div>
+                </div>
+                <div class="quote-box">
+                    <div class="quote-text">Small acts multiplied can change the world.</div>
+                    <div class="quote-author">— Howard Zinn</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOPICS SECTION -->
+    <section class="topics-section fade-in">
+        <h2 class="topics-title">Key Awareness Topics</h2>
+        <div class="topics-grid">
+            <div class="topic-card">
+                <div class="topic-icon"><i class="fas fa-leaf"></i></div>
+                <h3 class="topic-title">Climate Change</h3>
+                <p>Understand global warming, carbon footprints, and sustainable solutions for our planet.</p>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon"><i class="fas fa-brain"></i></div>
+                <h3 class="topic-title">Mental Health</h3>
+                <p>Break stigma, learn coping strategies, and prioritize emotional wellbeing.</p>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon"><i class="fas fa-venus-mars"></i></div>
+                <h3 class="topic-title">Women Empowerment</h3>
+                <p>Champion gender equality, leadership, and breaking glass ceilings worldwide.</p>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="topic-title">Cyber Security</h3>
+                <p>Protect your digital life with best practices and threat awareness.</p>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon"><i class="fas fa-balance-scale"></i></div>
+                <h3 class="topic-title">Human Rights</h3>
+                <p>Defend dignity, justice, and equality for every individual globally.</p>
+            </div>
+            <div class="topic-card">
+                <div class="topic-icon"><i class="fas fa-recycle"></i></div>
+                <h3 class="topic-title">Environment</h3>
+                <p>Preserve nature through conservation, recycling, and sustainable living.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section">
+        <h2 class="about-title">About Global Awareness Hub</h2>
+        <p class="about-text">
+            The Global Awareness Hub is a visionary platform designed to bring people together 
+            through knowledge, responsibility, and collective action for global challenges.
+        </p>
+        <p class="about-text">
+            We focus on climate change, mental health, women empowerment, cyber security, human rights, 
+            environmental protection, and digital awareness—equipping you with resources to make impact.
+        </p>
+        <p class="about-text">
+            Our mission is to inspire individuals and communities worldwide to take meaningful, 
+            sustainable actions toward a brighter, more equitable future.
+        </p>
+        <p class="about-text">
+            Awareness leads to understanding—and understanding leads to lasting change.
+        </p>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="team-section fade-in">
+        <h2 class="team-title">Our Dedicated Team</h2>
+        <div class="team-grid">
+            <div class="member-card">
+                <img src="jaul.jpg.jpg" alt="Sarah Anderson">
+                <h3 class="member-name">Jaul Haq</h3>
+                <p class="member-role">Student at BMSIT</p>
+                <a class="linkedin-btn" href="https://www.linkedin.com/in/jaul-haq-72a133389/" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+            <div class="member-card">
+                <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Michael Chen">
+                <h3 class="member-name">Michael Chen</h3>
+                <p class="member-role">Cyber Security Specialist</p>
+                <a class="linkedin-btn" href="https://linkedin.com" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+            <div class="member-card">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Sharma">
+                <h3 class="member-name">Priya Sharma</h3>
+                <p class="member-role">Social Impact Director</p>
+                <a class="linkedin-btn" href="https://linkedin.com" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+            <div class="member-card">
+                <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="James Rodriguez">
+                <h3 class="member-name">James Rodriguez</h3>
+                <p class="member-role">Sustainability Consultant</p>
+                <a class="linkedin-btn" href="https://linkedin.com" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" class="footer-link" onclick="showAbout()">About Us</a>
+                <a href="#" class="footer-link" onclick="scrollToTopics()">Topics</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+            <div style="margin-bottom: 24px;">
+                <i class="fas fa-globe" style="font-size: 24px; margin-bottom: 12px; display: block;"></i>
+                © 2025 Global Awareness Hub — Making the world a better place, one awareness at a time.
+            </div>
+            <div style="font-size: 14px; opacity: 0.8;">
+                Together, we create global impact.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Loading screen
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 800);
+        });
+
+        // Animate stats
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const increment = target / 100;
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 30);
+            });
+        }
+
+        // Show about section
+        function showAbout() {
+            const about = document.getElementById("about");
+            about.style.display = "block";
+            about.scrollIntoView({ behavior: "smooth" });
+            about.classList.add('show');
+        }
+
+        // Scroll to topics
+        function scrollToTopics() {
+            document.querySelector('.topics-section').scrollIntoView({ behavior: "smooth" });
+        }
+
+        // Pause quotes on hover
+        const quotesZone = document.getElementById("quotesZone");
+        const track = document.getElementById("quotesTrack");
+
+        quotesZone.addEventListener("mouseenter", () => {
+            track.style.animationPlayState = "paused";
+        });
+
+        quotesZone.addEventListener("mouseleave", () => {
+            track.style.animationPlayState = "running";
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('stats-section')) {
+                        animateStats();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 8px 32px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+            }
+        });
+    </script>
+</body>
+</html>

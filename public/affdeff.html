@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Afforestation & Deforestation - Global Awareness Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="style.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Inter",sans-serif;
+    font-size:clamp(14px,1.05vw,15px);
+    background:
+      linear-gradient(135deg,rgba(0,24,10,0.7),rgba(0,0,0,0.7)),
+      url('./affdeff.jpg.jpeg.jpg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:#020617;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  .container{max-width:1300px;margin:0 auto;padding:18px;}
+
+  .hero{
+    background:linear-gradient(135deg,rgba(3,47,28,0.97),rgba(6,95,70,0.97),rgba(21,128,61,0.96));
+    color:#ecfdf5;
+    text-align:center;
+    padding:clamp(2.6rem,6vw,3.5rem) clamp(1.4rem,5vw,2.4rem);
+    border-radius:24px;
+    margin-bottom:2.8rem;
+    box-shadow:0 22px 70px rgba(0,0,0,0.9);
+    position:relative;
+    overflow:hidden;
+    text-shadow:0 2px 8px rgba(0,0,0,0.7);
+  }
+  .hero::before{
+    content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(187,247,208,0.35),transparent);
+    animation:heroShimmer 4s infinite;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,4.2vw,3.2rem);
+    font-weight:800;
+    margin-bottom:0.35rem;
+    letter-spacing:-0.02em;
+  }
+  .hero-topic{
+    font-size:clamp(0.95rem,1.7vw,1.15rem);
+    font-weight:600;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:#bbf7d0;
+    margin-bottom:0.9rem;
+  }
+  .hero-subtitle{
+    font-size:clamp(1rem,2vw,1.35rem);
+    font-weight:300;
+    max-width:800px;
+    margin:0 auto 1.6rem;
+    opacity:0.96;
+  }
+  .intro-text{
+    max-width:820px;
+    margin:0 auto 2.4rem;
+    font-size:0.98rem;
+    font-weight:400;
+    color:#dcfce7;
+    background:rgba(5,30,16,0.96);
+    border-radius:18px;
+    padding:1rem 1.4rem;
+    box-shadow:0 10px 28px rgba(0,0,0,0.8);
+    line-height:1.5;
+  }
+
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1.2rem;
+    max-width:780px;
+    margin:0 auto;
+  }
+  .stat-hero{
+    text-align:center;
+    padding:1rem;
+    background:rgba(6,78,59,0.9);
+    backdrop-filter:blur(16px);
+    border-radius:16px;
+    border:1px solid rgba(52,211,153,0.85);
+    color:#ecfdf5;
+    box-shadow:0 0 14px rgba(0,0,0,0.75);
+  }
+  .stat-hero-number{
+    font-size:clamp(1.6rem,3vw,2.6rem);
+    font-weight:800;
+    background:linear-gradient(135deg,#bbf7d0,#ffffff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    display:block;
+  }
+  .stat-hero-label{font-size:0.9rem;opacity:0.95;font-weight:600;margin-top:0.3rem;}
+
+  .nav-grid{display:flex;justify-content:center;margin:2.4rem auto 0.6rem;max-width:900px;}
+  .nav-card{
+    background:radial-gradient(circle at top left,rgba(34,197,94,0.55),transparent 55%),
+               radial-gradient(circle at bottom right,rgba(21,128,61,0.75),transparent 55%),
+               rgba(5,30,16,0.98);
+    backdrop-filter:blur(22px);
+    border:1px solid rgba(52,211,153,0.9);
+    color:#f9fafb;
+    padding:1.4rem 1.8rem;
+    border-radius:999px;
+    text-align:center;
+    cursor:pointer;
+    transition:all 0.25s ease;
+    box-shadow:0 18px 55px rgba(0,0,0,0.85);
+    display:flex;align-items:center;gap:0.8rem;
+  }
+  .nav-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 26px 80px rgba(0,0,0,1);}
+  .nav-icon{font-size:2rem;color:#bbf7d0;}
+  .nav-title{font-size:1rem;font-weight:650;letter-spacing:0.02em;}
+  .nav-hint{text-align:center;font-size:0.9rem;color:#e5e7eb;margin-bottom:1.4rem;opacity:0.9;}
+
+  .quick-nav{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    gap:1rem;margin:0 auto 2.6rem;max-width:1000px;
+  }
+  .quick-nav-item{
+    min-width:130px;padding:0.85rem 1.1rem;border-radius:16px;
+    border:1px solid rgba(34,197,94,0.65);
+    background:linear-gradient(145deg,#ecfdf5,#f9fafb);
+    box-shadow:0 10px 28px rgba(15,23,42,0.6);
+    cursor:pointer;text-align:center;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    display:flex;flex-direction:column;align-items:center;gap:0.35rem;
+  }
+  .quick-nav-item i{font-size:1.35rem;color:#15803d;}
+  .quick-nav-item span{font-size:0.9rem;font-weight:650;color:#021319;}
+  .quick-nav-item:hover{transform:translateY(-3px);background:#bbf7d0;box-shadow:0 18px 40px rgba(15,23,42,0.85);}
+  .quick-nav-item.active{
+    background:linear-gradient(145deg,#15803d,#14532d);
+    color:#ecfdf5;border-color:rgba(34,197,94,1);
+  }
+  .quick-nav-item.active i{color:#bbf7d0;}
+  .quick-nav-item.active span{color:#ecfdf5;}
+
+  .content-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:2rem;
+    margin-bottom:3.2rem;
+  }
+  .content-card{
+    background:rgba(248,250,252,0.98);
+    backdrop-filter:blur(30px);
+    border-radius:20px;
+    padding:1.9rem 1.7rem;
+    box-shadow:0 20px 65px rgba(15,23,42,0.7),0 6px 18px rgba(15,23,42,0.4);
+    transition:all 0.3s ease;
+    border:1px solid rgba(209,250,229,0.95);
+    position:relative;overflow:hidden;
+  }
+  .content-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,#22c55e,#4ade80,#22c55e,#4ade80);
+    animation:cardShimmer 4s infinite;
+  }
+  .content-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 28px 80px rgba(15,23,42,0.85),0 14px 30px rgba(15,23,42,0.5);}
+  .card-title{
+    color:#022c22;font-size:clamp(1.35rem,2vw,1.7rem);
+    font-weight:800;margin-bottom:1.2rem;
+    display:flex;align-items:center;gap:0.6rem;
+  }
+  .card-title i{color:#15803d;}
+  .card-list{list-style:none;padding:0;}
+  .card-list li{
+    background:linear-gradient(135deg,#ecfdf5,#f9fafb);
+    margin:0.9rem 0;padding:1.1rem 1.3rem;
+    border-radius:14px;border-left:4px solid #22c55e;
+    transition:all 0.25s ease;color:#052e16;
+    font-weight:550;font-size:0.95rem;
+    box-shadow:0 4px 15px rgba(15,23,42,0.2);
+    position:relative;cursor:pointer;
+  }
+  .card-list li::before{content:'🌲';margin-right:0.7rem;font-size:1.1rem;}
+  .card-list li:hover{
+    transform:translateX(8px);
+    box-shadow:0 14px 30px rgba(15,23,42,0.4);
+    background:linear-gradient(135deg,#bbf7d0,#dcfce7);
+    border-left-color:#166534;
+  }
+
+  .video-section{
+    background:rgba(248,250,252,0.97);
+    backdrop-filter:blur(30px);
+    padding:2.2rem 2rem;
+    border-radius:22px;
+    margin:3rem 0;
+    box-shadow:0 26px 90px rgba(15,23,42,0.85);
+    border:1px solid rgba(209,250,229,0.95);
+  }
+  .video-title{
+    font-size:clamp(1.6rem,3vw,2.1rem);
+    font-weight:800;text-align:center;
+    margin-bottom:0.9rem;color:#022c22;
+  }
+  .video-desc{
+    text-align:center;font-size:0.98rem;max-width:780px;
+    margin:0 auto 1.8rem;color:#1f2937;font-weight:500;
+  }
+  .video-wrapper{
+    max-width:800px;margin:0 auto;border-radius:18px;overflow:hidden;
+    box-shadow:0 20px 60px rgba(15,23,42,0.9);
+    border:1px solid rgba(34,197,94,0.8);background:#000;
+  }
+  .video-wrapper video{width:100%;height:340px;object-fit:cover;display:block;}
+
+  .gallery-section{
+    background:rgba(248,250,252,0.97);
+    backdrop-filter:blur(32px);
+    padding:3.2rem 2.4rem;
+    border-radius:24px;
+    margin:3.5rem 0;
+    box-shadow:0 30px 100px rgba(15,23,42,0.85);
+    border:1px solid rgba(209,250,229,0.95);
+  }
+  .gallery-title{text-align:center;font-size:clamp(1.8rem,3.2vw,2.4rem);color:#022c22;margin-bottom:2.4rem;font-weight:800;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.8rem;}
+  .gallery-item{
+    display:flex;flex-direction:column;border-radius:20px;overflow:hidden;
+    box-shadow:0 24px 80px rgba(15,23,42,0.75);transition:all 0.5s ease;
+    cursor:pointer;position:relative;border:2px solid rgba(255,255,255,0.98);background:#ffffff;
+  }
+  .gallery-item img{width:100%;height:210px;object-fit:cover;}
+  .gallery-caption{padding:0.65rem 0.8rem;font-size:0.9rem;font-weight:600;color:#022c22;text-align:center;}
+  .gallery-item:hover{transform:scale(1.04) translateY(-8px);box-shadow:0 46px 140px rgba(15,23,42,0.95);border-color:rgba(34,197,94,1);}
+
+  .impact-section{
+    background:rgba(248,250,252,0.97);
+    backdrop-filter:blur(32px);
+    padding:3rem 2.3rem;
+    border-radius:24px;
+    margin:3.8rem 0;
+    text-align:center;
+    box-shadow:0 30px 100px rgba(15,23,42,0.9);
+    border:1px solid rgba(209,250,229,0.95);
+    position:relative;overflow:hidden;
+  }
+  .impact-section::before{
+    content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+    background:radial-gradient(circle,rgba(34,197,94,0.35) 0%,transparent 70%);
+    animation:float 20s infinite linear;
+  }
+  .impact-title{color:#022c22;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:800;margin-bottom:1rem;position:relative;z-index:2;}
+  .impact-stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:2rem;margin:2.2rem auto;max-width:1000px;
+  }
+  .impact-stat{
+    background:linear-gradient(135deg,rgba(255,255,255,0.97),rgba(220,252,231,0.98));
+    padding:1.8rem 1.6rem;border-radius:20px;
+    box-shadow:0 20px 60px rgba(15,23,42,0.55);
+    border:1px solid rgba(255,255,255,0.98);
+    transition:all 0.3s ease;
+  }
+  .impact-stat:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(15,23,42,0.85);}
+  .impact-number{
+    font-size:clamp(1.9rem,3.4vw,2.6rem);
+    font-weight:900;
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;margin-bottom:0.6rem;
+  }
+  .impact-label{font-size:0.98rem;color:#1f2937;font-weight:700;}
+
+  .feedback-section{
+    background:radial-gradient(circle at top left,rgba(220,252,231,0.7),transparent 55%),
+               radial-gradient(circle at bottom right,rgba(187,247,208,0.7),transparent 55%),
+               rgba(255,255,255,0.98);
+    backdrop-filter:blur(34px);
+    padding:2.8rem 2.3rem;
+    border-radius:26px;
+    margin:3.5rem 0;
+    box-shadow:0 32px 110px rgba(15,23,42,0.9);
+    border:1px solid rgba(255,255,255,0.98);
+    position:relative;overflow:hidden;
+  }
+  .feedback-section::before{
+    content:"";position:absolute;inset:-40%;
+    background:radial-gradient(circle,rgba(255,255,255,0.22) 0,transparent 70%);
+    opacity:0.35;pointer-events:none;
+  }
+  .feedback-title{
+    position:relative;font-size:clamp(1.9rem,3vw,2.5rem);
+    font-weight:800;text-align:center;color:#064e3b;margin-bottom:0.4rem;
+  }
+  .feedback-subtitle{
+    position:relative;text-align:center;max-width:720px;
+    margin:0 auto 2rem;font-size:0.98rem;color:#4b5563;
+  }
+  .feedback-layout{
+    position:relative;display:grid;
+    grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr);
+    gap:1.8rem;align-items:flex-start;
+  }
+  .feedback-form{
+    display:flex;flex-direction:column;gap:1rem;
+    background:rgba(255,255,255,0.98);border-radius:18px;
+    padding:1.4rem 1.5rem;box-shadow:0 20px 60px rgba(15,23,42,0.28);
+    border:1px solid rgba(52,211,153,0.7);
+  }
+  .feedback-row{display:flex;gap:0.9rem;flex-wrap:wrap;}
+  .feedback-form input,.feedback-form select,.feedback-form textarea{
+    width:100%;padding:0.75rem 0.9rem;border-radius:10px;
+    border:1px solid rgba(52,211,153,0.7);
+    font-size:0.96rem;font-family:inherit;background:#f0fdf4;
+    transition:border-color 0.2s,box-shadow 0.2s,background 0.2s;
+  }
+  .feedback-form input:focus,
+  .feedback-form select:focus,
+  .feedback-form textarea:focus{
+    outline:none;border-color:#22c55e;
+    box-shadow:0 0 0 2px rgba(34,197,94,0.5);
+    background:#ffffff;
+  }
+  .feedback-form textarea{min-height:120px;resize:vertical;}
+  .feedback-actions{display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;}
+  .feedback-form button{
+    padding:0.8rem 1.9rem;border-radius:999px;border:none;cursor:pointer;
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    color:#ecfdf5;font-weight:750;font-size:0.98rem;
+    box-shadow:0 18px 55px rgba(15,23,42,0.55);
+    display:inline-flex;align-items:center;gap:0.4rem;
+    transition:transform 0.15s ease,box-shadow 0.15s ease;
+  }
+  .feedback-form button:hover{transform:translateY(-2px);box-shadow:0 24px 70px rgba(15,23,42,0.8);}
+  .feedback-info{font-size:0.9rem;color:#166534;display:none;}
+  .feedback-side{display:flex;flex-direction:column;gap:1rem;}
+  .feedback-stat-card{
+    background:rgba(15,23,42,0.98);color:#f9fafb;
+    border-radius:16px;padding:1.1rem 1.2rem;
+    box-shadow:0 18px 55px rgba(0,0,0,0.9);
+  }
+  .feedback-stat-card h3{margin:0 0 0.6rem 0;font-size:1rem;letter-spacing:0.01em;}
+  .feedback-stat-card ul{margin:0;padding-left:1.1rem;font-size:0.9rem;}
+  .feedback-stat-card li{margin-bottom:0.35rem;}
+  .feedback-highlight{
+    background:linear-gradient(135deg,#fef9c3,#dcfce7);
+    border-radius:14px;padding:0.85rem 1rem;
+    border:1px dashed rgba(34,197,94,0.7);
+    font-size:0.9rem;color:#1f2937;
+  }
+  .highlight-label{display:inline-block;font-weight:700;margin-bottom:0.3rem;}
+
+  #quiz-section{
+    max-width:1100px;
+    margin:2.5rem auto 3.5rem auto;
+    padding:1.8rem;
+    border-radius:12px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.97),rgba(220,252,231,0.97));
+    border:1px solid rgba(52,211,153,0.7);
+    box-shadow:0 20px 60px rgba(15,23,42,0.12);
+  }
+
+  @media(max-width:900px){.content-grid{grid-template-columns:1fr;}}
+  @media(max-width:768px){
+    .container{padding:14px;}
+    .hero{padding:2.2rem 1.4rem;}
+    .content-card,.video-section,.gallery-section,.impact-section,.feedback-section{padding:1.8rem 1.5rem;}
+    .video-wrapper video{height:220px;}
+    .gallery-item img{height:190px;}
+  }
+
+  @keyframes heroShimmer{0%{left:-100%;}100%{left:100%;}}
+  @keyframes cardShimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+  @keyframes float{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- HERO -->
+    <section class="hero" aria-label="Afforestation and deforestation introduction">
+      <h1>🌳 Afforestation & Deforestation</h1>
+      <div class="hero-topic">Subtopic: Cutting Trees vs. Growing Forests</div>
+      <p class="hero-subtitle">The same trees that clean our air and protect soil are disappearing fast in many places—but smart planting and protection can reverse the trend.</p>
+      <p class="intro-text">
+        Deforestation is large‑scale removal of forests, often for farming, cities, or timber, which harms climate, wildlife, soil, and water.
+        Afforestation and reforestation mean planting trees where there were none or where forests were lost, helping to restore carbon sinks, biodiversity, and local livelihoods.
+      </p>
+      <div class="hero-stats" role="list">
+        <div class="stat-hero" role="listitem">
+          <span class="stat-hero-number">> 10M ha</span>
+          <span class="stat-hero-label">Estimated global forest loss per year in recent decades.</span>
+        </div>
+        <div class="stat-hero" role="listitem">
+          <span class="stat-hero-number">~15%</span>
+          <span class="stat-hero-label">Share of global CO₂ emissions linked to deforestation and forest degradation.</span>
+        </div>
+        <div class="stat-hero" role="listitem">
+          <span class="stat-hero-number">Tree power</span>
+          <span class="stat-hero-label">Well‑planned tree planting can cool cities, store carbon, and protect water.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAV -->
+    <nav class="nav-grid" aria-label="Quick navigation to sections">
+      <div class="nav-card" id="open-quick-nav">
+        <i class="fas fa-compass nav-icon" aria-hidden="true"></i>
+        <div class="nav-title">Explore Forest Topics</div>
+      </div>
+    </nav>
+    <p class="nav-hint">Scroll or tap a card to jump to basics, deforestation, afforestation, impacts, actions, careers, media, feedback, and quiz.</p>
+
+    <div id="quick-nav" class="quick-nav" aria-label="Section shortcuts">
+      <button class="quick-nav-item" data-target="basics-card">
+        <i class="fas fa-tree"></i>
+        <span>Basics</span>
+      </button>
+      <button class="quick-nav-item" data-target="deforest-card">
+        <i class="fas fa-fire"></i>
+        <span>Deforestation</span>
+      </button>
+      <button class="quick-nav-item" data-target="afforest-card">
+        <i class="fas fa-seedling"></i>
+        <span>Afforestation</span>
+      </button>
+      <button class="quick-nav-item" data-target="impact-card">
+        <i class="fas fa-globe-asia"></i>
+        <span>Impacts</span>
+      </button>
+      <button class="quick-nav-item" data-target="actions-card">
+        <i class="fas fa-hand-holding-seedling"></i>
+        <span>Your Actions</span>
+      </button>
+      <button class="quick-nav-item" data-target="careers-card">
+        <i class="fas fa-briefcase"></i>
+        <span>Green Careers</span>
+      </button>
+      <button class="quick-nav-item" data-target="video-section">
+        <i class="fas fa-video"></i>
+        <span>Awareness</span>
+      </button>
+      <button class="quick-nav-item" data-target="gallery-section">
+        <i class="fas fa-images"></i>
+        <span>Gallery</span>
+      </button>
+      <button class="quick-nav-item" data-target="feedback-section">
+        <i class="fas fa-comment-dots"></i>
+        <span>Feedback</span>
+      </button>
+      <button class="quick-nav-item" data-target="quiz-section">
+        <i class="fas fa-question-circle"></i>
+        <span>Quiz</span>
+      </button>
+    </div>
+
+    <!-- CONTENT GRID -->
+    <section class="content-grid" aria-label="Afforestation and deforestation information">
+      <article class="content-card" id="basics-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-tree"></i> Basics: Forests & Land Use</h3>
+        <ul class="card-list">
+          <li>Afforestation is planting trees on land that has not been forested for a long time, creating new forests.</li>
+          <li>Reforestation means replanting trees in areas where forests were recently cleared or degraded.</li>
+          <li>Deforestation is permanent or long‑term removal of forest cover, usually to use land for other purposes.</li>
+          <li>Healthy forests store carbon, regulate water cycles, protect soil, and host rich biodiversity.</li>
+          <li>Balancing human needs with forest protection is key to sustainable development.</li>
+        </ul>
+      </article>
+
+      <article class="content-card" id="deforest-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-fire"></i> Deforestation: Causes</h3>
+        <ul class="card-list">
+          <li>Expanding agriculture for crops, cattle, and plantations is the main driver of forest clearing worldwide.</li>
+          <li>Logging for timber and paper, legal and illegal, removes trees faster than they regrow.</li>
+          <li>Urbanisation, roads, dams, and mining convert forests into built‑up or industrial land.</li>
+          <li>Fires, sometimes set deliberately to clear land, can escape and burn large forest areas.</li>
+          <li>Weak enforcement and land‑use planning make unsustainable clearing easier.</li>
+        </ul>
+      </article>
+
+      <article class="content-card" id="afforest-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-seedling"></i> Afforestation: What & Why</h3>
+        <ul class="card-list">
+          <li>Afforestation projects plant trees on degraded, barren, or unused land to build new forest cover.</li>
+          <li>Good projects use native or climate‑suitable species and a mix of trees to support biodiversity.</li>
+          <li>Trees store carbon, cool the air, reduce dust and noise, and improve city micro‑climates.</li>
+          <li>Forests protect watersheds, reduce floods, and keep soil from washing or blowing away.</li>
+          <li>Community‑led planting can also provide jobs, fruits, fuelwood, and non‑timber forest products.</li>
+        </ul>
+      </article>
+
+      <article class="content-card" id="impact-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-globe-asia"></i> Impacts of Losing & Gaining Forests</h3>
+        <ul class="card-list">
+          <li>Deforestation releases stored carbon, increases greenhouse gases, and speeds up climate change.</li>
+          <li>It also destroys habitats, pushing many plant and animal species toward extinction.</li>
+          <li>Afforestation and reforestation can help offset emissions, support wildlife corridors, and reduce erosion.</li>
+          <li>Well‑managed forests act as natural buffers against floods, landslides, and heatwaves.</li>
+          <li>Monoculture plantations offer fewer benefits than diverse, native forests.</li>
+        </ul>
+      </article>
+
+      <article class="content-card" id="actions-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-hand-holding-seedling"></i> What Students Can Do Now</h3>
+        <ul class="card-list">
+          <li>Join or start tree‑planting drives that focus on native species and long‑term care, not just one‑day photos.</li>
+          <li>Reduce paper and wood waste: print less, reuse notebooks, and choose recycled paper when possible.</li>
+          <li>Support products and brands that avoid deforestation‑linked ingredients like unsustainable palm oil.</li>
+          <li>Use projects, posters, and social media to highlight local forest loss and success stories.</li>
+          <li>Respect nearby trees by not carving bark, burning leaf piles carelessly, or dumping waste in green spaces.</li>
+        </ul>
+      </article>
+
+      <!-- NEW CARD: GREEN CAREERS & FUTURE PATHS -->
+      <article class="content-card" id="careers-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-briefcase"></i> Green Careers & Future Paths</h3>
+        <ul class="card-list">
+          <li>Students interested in forests can later study forestry, environmental science, wildlife biology, or geography.</li>
+          <li>Jobs in this area include forest and conservation workers, rangers, researchers, planners, and policy experts.</li>
+          <li>Joining youth forest networks, monitoring programs, and green clubs builds real‑world skills early.</li>
+          <li>School projects on forest mapping, campus tree audits, or mini‑reforestation plans are a strong first step.</li>
+          <li>Caring about forests today can grow into a full‑time career protecting nature and communities tomorrow.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="video-section" id="video-section" aria-label="Afforestation and deforestation awareness video">
+      <h2 class="video-title">🎬 Two Futures for Our Forests</h2>
+      <p class="video-desc">
+        This short video contrasts a landscape losing trees to unchecked deforestation with another rebuilt through careful afforestation and community forest protection.
+      </p>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="afforestation_deforestation_awareness.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="gallery-section" aria-label="Afforestation and deforestation gallery">
+      <h2 class="gallery-title">📸 Forest Loss & Hope</h2>
+      <div class="gallery-grid">
+        <figure class="gallery-item" tabindex="0">
+          <img src="safe.jpg" alt="Students holding save trees posters" />
+          <figcaption class="gallery-caption">Campus “Save Trees” rally</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="slope.jpg" alt="Hillside with trees cut and soil eroding" />
+          <figcaption class="gallery-caption">Bare slope after tree cutting</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="sapling.jpg" alt="Row of young saplings with guards" />
+          <figcaption class="gallery-caption">New saplings along the road</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="plantion.jpg" alt="Farmer using agroforestry with crops and trees together" />
+          <figcaption class="gallery-caption">Agroforestry: crops with trees</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="river.jpg" alt="Students planting trees near a riverbank" />
+          <figcaption class="gallery-caption">Planting to protect riverbanks</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="simple.jpg" alt="Poster with tips to save trees and reduce paper waste" />
+          <figcaption class="gallery-caption">Simple tips to save trees</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="seminar.jpg" alt="Seminar on forest conservation and climate change" />
+          <figcaption class="gallery-caption">Seminar: forests & climate</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="tap.jpg" alt="Student watering a sapling with a can" />
+          <figcaption class="gallery-caption">Caring for planted saplings</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="impact-section" id="impact-card" aria-label="Afforestation and deforestation impact">
+      <h2 class="impact-title">Forests at the Heart of Climate & Life</h2>
+      <p style="font-size:0.98rem;color:#1e293b;max-width:780px;margin:0 auto 2.2rem;font-weight:500;">
+        Large‑scale deforestation accelerates climate change, harms biodiversity, and increases disaster risk, while afforestation and reforestation can strongly support climate goals and adaptation. 
+        The quality of forests—diverse, native, and well‑managed—matters as much as the number of trees planted.
+      </p>
+      <div class="impact-stats">
+        <div class="impact-stat">
+          <span class="impact-number">Carbon sinks</span>
+          <div class="impact-label">Forests absorb and store huge amounts of CO₂.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">Biodiversity</span>
+          <div class="impact-label">Many of Earth’s species depend on forest habitats.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">Water</span>
+          <div class="impact-label">Trees stabilise rainfall, rivers, and groundwater.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">People</span>
+          <div class="impact-label">Forests support livelihoods, culture, and health.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">Balance</span>
+          <div class="impact-label">Protect existing forests first, then plant wisely.</div>
+        </div>
+      </div>
+    </section>
+
+<!-- QUIZ SECTION -->
+<section id="quiz-section" aria-label="Afforestation and deforestation quiz">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:1rem;">
+    <h2 style="font-size:1.35rem;margin:0;color:#064e3b">Test Your Knowledge — Forests Quiz</h2>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <div id="quiz-points" style="background:#022c22;color:#ecfdf5;padding:.5rem .8rem;border-radius:10px;font-weight:700">Points: 0</div>
+      <div id="quiz-streak" style="background:#14532d;color:#e5e7eb;padding:.5rem .8rem;border-radius:10px;font-weight:700">Streak: 0</div>
+      <button id="replace-nav-icons" title="Replace nav photos with icons" style="background:transparent;border:1px solid rgba(34,197,94,0.8);padding:.4rem .6rem;border-radius:8px;cursor:pointer">Use Icons</button>
+      <button id="open-leaderboard" title="Open leaderboard" style="background:transparent;border:1px solid rgba(34,197,94,0.8);padding:.4rem .6rem;border-radius:8px;cursor:pointer">Leaderboard</button>
+    </div>
+  </div>
+
+  <div id="quiz-inner" style="min-height:160px;"></div>
+
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;align-items:center;">
+    <button id="quiz-prev" style="background:#dcfce7;color:#064e3b;padding:.6rem 1rem;border-radius:10px;border:none;cursor:pointer">Previous</button>
+    <button id="quiz-next" style="background:linear-gradient(90deg,#22c55e,#16a34a);color:#ecfdf5;padding:.6rem 1rem;border-radius:10px;border:none;cursor:pointer;font-weight:700">Next</button>
+    <button id="quiz-submit" style="background:#16a34a;color:#fff;padding:.6rem 1rem;border-radius:10px;border:none;cursor:pointer;margin-left:8px;font-weight:700">Submit Quiz</button>
+    <button id="quiz-restart" style="margin-left:auto;background:transparent;border:1px solid rgba(34,197,94,0.8);padding:.5rem .9rem;border-radius:10px;cursor:pointer;font-weight:600">Restart Quiz</button>
+  </div>
+
+  <div id="quiz-feedback" aria-live="polite" style="margin-top:1rem;font-weight:700;color:#7c2d12"></div>
+
+  <div id="quiz-summary" style="margin-top:1.2rem;padding:0.9rem 1rem;border-radius:10px;background:#fef9c3;color:#1f2937;display:none;"></div>
+</section>
+
+<!-- LEADERBOARD MODAL -->
+<div id="leaderboard-modal" role="dialog" aria-modal="true" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:9999;">
+  <div style="width:calc(100% - 60px);max-width:520px;background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(34,197,94,0.8);box-shadow:0 30px 90px rgba(3,18,40,0.25);margin:auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <h3 style="margin:0;color:#064e3b">Leaderboard — Top Scores</h3>
+      <button id="lb-close" style="background:transparent;border:none;font-weight:700;cursor:pointer">✕</button>
+    </div>
+    <ol id="leaderboard-list" style="margin-top:12px;padding-left:18px;color:#064e3b;font-weight:700"></ol>
+    <div style="display:flex;gap:8px;margin-top:12px;align-items:center;">
+      <input id="lb-name" placeholder="Your name" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(34,197,94,0.8)" />
+      <button id="lb-save" style="background:linear-gradient(90deg,#22c55e,#16a34a);border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700;color:#ecfdf5">Save</button>
+    </div>
+    <div style="margin-top:10px;text-align:right;color:#666;font-size:0.9rem">Top 3 scores stored locally.</div>
+  </div>
+</div>
+
+<!-- EXPLANATION MODAL -->
+<div id="explain-modal" role="dialog" aria-modal="true" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:10000;">
+  <div style="width:calc(100% - 60px);max-width:640px;background:#022c22;color:#e5e7eb;border-radius:12px;padding:18px;border:1px solid rgba(34,197,94,0.8);box-shadow:0 30px 90px rgba(0,0,0,0.85);margin:auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <h3 id="explain-title" style="margin:0">Answer explanation</h3>
+      <button id="explain-close" style="background:transparent;border:none;color:#e5e7eb;font-weight:700;cursor:pointer">✕</button>
+    </div>
+    <div id="explain-body" style="margin-top:12px;font-size:1rem;line-height:1.5;color:#bbf7d0"></div>
+    <div style="text-align:right;margin-top:12px;">
+      <button id="explain-next" style="background:#22c55e;border:none;color:#022c22;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700">Continue</button>
+    </div>
+  </div>
+</div>
+<!-- FEEDBACK -->
+<section class="feedback-section" id="feedback-section" aria-label="Share your thoughts on afforestation and deforestation">
+  <h2 class="feedback-title">💬 Share Your Thoughts</h2>
+  <p class="feedback-subtitle">
+    Explain how this page changed your view of trees and forests, or suggest ideas to make your campus more forest‑ and climate‑friendly.
+  </p>
+
+  <div class="feedback-layout">
+    <form class="feedback-form" id="feedback-form">
+      <div class="feedback-row">
+        <input type="text" name="name" placeholder="Your name" aria-label="Your name">
+        <input type="email" name="email" placeholder="Email (optional)" aria-label="Your email">
+      </div>
+
+      <div class="feedback-row">
+        <select name="mood" aria-label="How do you feel about this page?">
+          <option value="">How was this page?</option>
+          <option value="excellent">🌟 Very inspiring</option>
+          <option value="good">👍 Good reminder</option>
+          <option value="ok">🙂 Informative</option>
+          <option value="bad">😕 Needs improvement</option>
+        </select>
+      </div>
+
+      <textarea name="message" placeholder="Write your feedback, tree-planting ideas, or examples of local forest issues and solutions..."></textarea>
+
+      <div class="feedback-actions">
+        <button type="submit" id="feedback-submit">
+          <i class="fas fa-paper-plane"></i>&nbsp;Send Feedback
+        </button>
+        <span id="feedback-info" class="feedback-info">Thanks for speaking up for forests! 💚</span>
+      </div>
+    </form>
+
+    <div class="feedback-side">
+      <div class="feedback-stat-card">
+        <h3>Why your voice matters</h3>
+        <ul>
+          <li>Shows which forest topics students care about most—loss, planting, or protection.</li>
+          <li>Helps schools plan better tree drives and nature‑based projects.</li>
+          <li>Encourages friends to protect trees instead of ignoring cutting around them.</li>
+        </ul>
+      </div>
+      <div class="feedback-highlight">
+        <span class="highlight-label">Plant, protect, repeat</span>
+        <p>Planting a tree is powerful, but protecting existing forests and caring for saplings until they grow tall is what truly changes the landscape.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SMOOTH SCROLL + SECTION HIGHLIGHT (KEEPING YOUR OLD NAV JS) -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const fbForm = document.getElementById('feedback-form');
+    const fbInfo = document.getElementById('feedback-info');
+
+    function smoothScrollTo(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+
+    const openQuickNav = document.getElementById('open-quick-nav');
+    if(openQuickNav){
+      openQuickNav.addEventListener('click', ()=>{
+        const strip = document.getElementById('quick-nav');
+        if(strip){
+          const top = strip.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({top, behavior:'smooth'});
+        }
+      });
+    }
+
+    const quickButtons = document.querySelectorAll('.quick-nav-item');
+    quickButtons.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const target = btn.getAttribute('data-target');
+        if(target) smoothScrollTo(target);
+      });
+    });
+
+    const sectionIds = ['basics-card','deforest-card','afforest-card','impact-card','actions-card','careers-card','video-section','gallery-section','feedback-section','quiz-section'];
+    const sectionMap = {};
+    sectionIds.forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) sectionMap[id] = el;
+    });
+    function onScrollHighlight(){
+      const scrollPos = window.scrollY + 120;
+      let currentId = null;
+      for(const id in sectionMap){
+        const rectTop = sectionMap[id].offsetTop;
+        if(scrollPos >= rectTop) currentId = id;
+      }
+      if(!currentId) return;
+      quickButtons.forEach(btn=>{
+        const t = btn.getAttribute('data-target');
+        if(t === currentId) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+    window.addEventListener('scroll', onScrollHighlight);
+    onScrollHighlight();
+  });
+</script>
+
+<!-- LOGIN STREAK + QUIZ JS (KEEP YOUR EXISTING QUIZ SCRIPT UNCHANGED) -->
+<script>
+  (function () {
+    const LOGIN_KEY = "daily_login_last";
+    const LOGIN_STREAK = "daily_login_streak";
+    let lastLogin = localStorage.getItem(LOGIN_KEY);
+    let streakLogin = parseInt(localStorage.getItem(LOGIN_STREAK)) || 0;
+    let today = new Date().toDateString();
+    let yesterday = new Date(Date.now() - 86400000).toDateString();
+
+    if (lastLogin !== today) {
+      if (lastLogin === yesterday) streakLogin += 1;
+      else streakLogin = 1;
+      localStorage.setItem(LOGIN_KEY, today);
+      localStorage.setItem(LOGIN_STREAK, streakLogin);
+    }
+
+    // ... keep the rest of your existing quiz code here exactly as in your file ...
+  })();
+</script>
+
+<!-- NEW FEEDBACK -> NODE API SCRIPT -->
+<script>
+  async function postJson(url, payload) {
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      return res.ok;
+    } catch (err) {
+      console.error('Request failed:', err);
+      return false;
+    }
+  }
+
+  async function sendFeedbackToServer(entry) {
+    return await postJson('/api/feedback', entry);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const fbForm = document.getElementById('feedback-form');
+    const fbInfo = document.getElementById('feedback-info');
+
+    if (!fbForm) return;
+
+    fbForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(fbForm);
+      const entry = {
+        topic: 'affdeff',
+        name: (formData.get('name') || '').trim(),
+        email: (formData.get('email') || '').trim(),
+        mood: (formData.get('mood') || '').trim(),
+        message: (formData.get('message') || '').trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      if (!entry.message) {
+        if (fbInfo) {
+          fbInfo.textContent = 'Please write some feedback before sending.';
+          fbInfo.style.display = 'inline';
+          setTimeout(() => { fbInfo.style.display = 'none'; }, 3000);
+        }
+        return;
+      }
+
+      const ok = await sendFeedbackToServer(entry);
+
+      if (fbInfo) {
+        fbInfo.textContent = ok
+          ? 'Feedback sent! 💚'
+          : 'Could not send feedback. Please try again later.';
+        fbInfo.style.display = 'inline';
+        setTimeout(() => { fbInfo.style.display = 'none'; }, 4000);
+      }
+
+      if (ok) fbForm.reset();
+    });
+  });
+</script>
+<script>
+  (function () {
+    const LOGIN_KEY = "daily_login_last";
+    const LOGIN_STREAK = "daily_login_streak";
+    let lastLogin = localStorage.getItem(LOGIN_KEY);
+    let streakLogin = parseInt(localStorage.getItem(LOGIN_STREAK)) || 0;
+    let today = new Date().toDateString();
+    let yesterday = new Date(Date.now() - 86400000).toDateString();
+
+    if (lastLogin !== today) {
+      if (lastLogin === yesterday) streakLogin += 1;
+      else streakLogin = 1;
+      localStorage.setItem(LOGIN_KEY, today);
+      localStorage.setItem(LOGIN_STREAK, streakLogin);
+    }
+
+    const questions = [
+      { q:"What is deforestation?", opts:["Planting trees in cities","Large-scale removal of forests, often for other land uses","Only natural forest fires","Cutting grass in gardens"], a:1, explain:"Deforestation is the long-term clearing of forests for uses like farming, logging, and development." },
+      { q:"What is afforestation?", opts:["Removing old trees","Planting trees on non-forested land to create a new forest","Only protecting existing forests","Cutting branches"], a:1, explain:"Afforestation means planting trees where there was no recent forest." },
+      { q:"Which activity leads directly to deforestation?", opts:["Reading e-books","Converting forests to cattle ranches or large farms","Growing vegetables on a balcony","Collecting fallen leaves"], a:1, explain:"Expanding agriculture is a major driver of forest loss." },
+      { q:"How does deforestation affect climate?", opts:["It cools the planet","It releases stored carbon and reduces CO₂ absorption","It has no effect","It instantly creates rain"], a:1, explain:"Cutting trees releases carbon and reduces carbon sinks, warming the climate." },
+      { q:"How does planting trees help cities?", opts:["Makes air dirtier","Increases noise","Provides shade, cleaner air, and cooler temperatures","Blocks all wind and rain"], a:2, explain:"Urban trees cool streets, filter air, and improve comfort." },
+      { q:"Which forest type is usually better for biodiversity?", opts:["Single-species plantation","Mixed, mostly native forest","Plastic tree decorations","Concrete park"], a:1, explain:"Diverse, native forests support far more species." },
+      { q:"What is a good student action for forests?", opts:["Burning leaf piles under trees","Joining long-term tree-care programs and reducing paper waste","Carving names into bark","Buying products that cause forest loss"], a:1, explain:"Tree care and lower paper use support forest conservation." },
+      { q:"Why is protecting existing forests often better than only planting new ones?", opts:["Old forests are useless","Mature forests already store huge carbon and biodiversity","Young trees grow too fast","Planting is always enough"], a:1, explain:"Intact forests hold large carbon stocks and complex habitats." },
+      { q:"Which of these is a benefit of afforestation?", opts:["More soil erosion","Better soil stability and reduced flood risk","Less biodiversity","Instant mining benefits"], a:1, explain:"Tree roots stabilise soil and reduce flood and erosion risk." },
+      { q:"What is a simple way you can support forests from home?", opts:["Printing every note","Throwing paper anywhere","Using both sides of paper and recycling","Burning plastic in forests"], a:2, explain:"Using less paper and recycling reduces pressure on forests." }
+    ];
+
+    const STORAGE_POINTS = 'forest_quiz_points_v1';
+    const STORAGE_STREAK = 'forest_quiz_streak_v1';
+    const STORAGE_INDEX  = 'forest_quiz_index_v1';
+    const STORAGE_ANSW   = 'forest_quiz_answered_v1';
+    const STORAGE_LEADER = 'forest_quiz_leaderboard_v1';
+
+    let points   = parseInt(localStorage.getItem(STORAGE_POINTS)) || 0;
+    let streak   = parseInt(localStorage.getItem(STORAGE_STREAK)) || 0;
+    let idx      = parseInt(localStorage.getItem(STORAGE_INDEX))  || 0;
+    let answered = JSON.parse(localStorage.getItem(STORAGE_ANSW) || '{}');
+    let quizStartTime = Date.now();
+
+    const wrap       = document.getElementById('quiz-inner');
+    const ptsEl      = document.getElementById('quiz-points');
+    const streakEl   = document.getElementById('quiz-streak');
+    const prevBtn    = document.getElementById('quiz-prev');
+    const nextBtn    = document.getElementById('quiz-next');
+    const restartBtn = document.getElementById('quiz-restart');
+    const submitBtn  = document.getElementById('quiz-submit');
+    const feedback   = document.getElementById('quiz-feedback');
+    const summaryEl  = document.getElementById('quiz-summary');
+
+    const lbModal    = document.getElementById('leaderboard-modal');
+    const lbList     = document.getElementById('leaderboard-list');
+    const lbClose    = document.getElementById('lb-close');
+    const lbSaveBtn  = document.getElementById('lb-save');
+    const lbNameInput= document.getElementById('lb-name');
+    const openLbBtn  = document.getElementById('open-leaderboard');
+
+    const explainModal = document.getElementById('explain-modal');
+    const explainTitle = document.getElementById('explain-title');
+    const explainBody  = document.getElementById('explain-body');
+    const explainClose = document.getElementById('explain-close');
+    const explainNext  = document.getElementById('explain-next');
+
+    const replaceIconsBtn = document.getElementById('replace-nav-icons');
+
+    (function renderDailyStreakBox() {
+      try{
+        const quizSection = document.getElementById('quiz-section');
+        if(quizSection){
+          const streakBox = document.createElement("div");
+          streakBox.style.cssText="background:#022c22;color:#ecfdf5;padding:8px 12px;border-radius:8px;font-weight:700;margin-bottom:10px;text-align:center;";
+          streakBox.textContent="🔥 Daily Login Streak: "+streakLogin+" day"+(streakLogin===1?"":"s");
+          quizSection.prepend(streakBox);
+        }
+      }catch(e){console.error(e);}
+    })();
+
+    function saveState(){
+      localStorage.setItem(STORAGE_POINTS,points);
+      localStorage.setItem(STORAGE_STREAK,streak);
+      localStorage.setItem(STORAGE_INDEX,idx);
+      localStorage.setItem(STORAGE_ANSW,JSON.stringify(answered));
+    }
+
+    function renderScore(){
+      ptsEl.textContent='Points: '+points;
+      streakEl.textContent='Streak: '+streak;
+    }
+
+    function renderQuestion(i){
+      const Q = questions[i];
+      wrap.innerHTML='';
+      if(!Q){wrap.textContent='No questions configured.';return;}
+
+      const qBox=document.createElement('div');
+      qBox.style.padding='0.8rem';
+      const qTitle=document.createElement('div');
+      qTitle.textContent=(i+1)+'. '+Q.q;
+      qTitle.style.fontWeight='800';
+      qTitle.style.marginBottom='0.8rem';
+      qTitle.style.color='#064e3b';
+      qTitle.style.fontSize='1.05rem';
+      qTitle.style.lineHeight='1.35';
+      qBox.appendChild(qTitle);
+
+      const list=document.createElement('div');
+      list.style.display='grid';
+      list.style.gridTemplateColumns='1fr';
+      list.style.gap='0.6rem';
+
+      Q.opts.forEach((opt,j)=>{
+        const btn=document.createElement('button');
+        btn.type='button';
+        btn.className='quiz-opt';
+        btn.textContent=opt;
+        btn.dataset.opt=j;
+
+        btn.style.textAlign='left';
+        btn.style.padding='0.85rem';
+        btn.style.borderRadius='10px';
+        btn.style.border='1px solid rgba(52,211,153,0.7)';
+        btn.style.background='#ffffff';
+        btn.style.color='#064e3b';
+        btn.style.cursor='pointer';
+        btn.style.fontWeight=700;
+        btn.style.fontSize='0.98rem';
+        btn.style.boxShadow='0 6px 18px rgba(3,18,40,0.08)';
+        btn.style.transition='transform .12s ease, box-shadow .12s ease';
+
+        btn.addEventListener('mouseenter',()=>{
+          btn.style.transform='translateY(-2px)';
+          btn.style.boxShadow='0 10px 24px rgba(3,18,40,0.16)';
+        });
+        btn.addEventListener('mouseleave',()=>{
+          btn.style.transform='none';
+          btn.style.boxShadow='0 6px 18px rgba(3,18,40,0.08)';
+        });
+
+        btn.addEventListener('click',()=>onChoose(i,j));
+
+        if(answered[i]!==undefined){
+          btn.disabled=true;
+          if(j===answered[i].chosen) btn.style.outline='3px solid rgba(52,211,153,0.7)';
+          if(j===Q.a){
+            btn.style.background='#dcfce7';
+            btn.style.borderColor='#22c55e';
+            btn.style.color='#064e3b';
+          }
+        }
+
+        list.appendChild(btn);
+      });
+
+      qBox.appendChild(list);
+      wrap.appendChild(qBox);
+      feedback.textContent='';
+    }
+
+    function onChoose(i,chosen){
+      const Q=questions[i];
+      const opts=wrap.querySelectorAll('.quiz-opt');
+      opts.forEach(o=>o.disabled=true);
+
+      const correct=(chosen===Q.a);
+      if(correct){
+        points+=10;streak+=1;
+        feedback.style.color='#166534';
+        feedback.textContent='Correct! +10 points 🎉';
+      }else{
+        points=Math.max(0,points-5);streak=0;
+        feedback.style.color='#7c2d12';
+        feedback.textContent='Wrong! -5 points 😬';
+      }
+
+      opts.forEach(o=>{
+        const j=parseInt(o.dataset.opt,10);
+        if(j===Q.a){
+          o.style.background='#dcfce7';
+          o.style.borderColor='#22c55e';
+        }else{
+          o.style.opacity='0.85';
+        }
+        if(j===chosen && !correct){
+          o.style.background='#fee2e2';
+          o.style.borderColor='#ef4444';
+          o.style.outline='2px solid rgba(239,68,68,0.2)';
+        }
+      });
+
+      answered[i]={chosen,correct,time:Date.now()};
+      saveState();
+      renderScore();
+      showExplanation(Q);
+    }
+
+    function showExplanation(Q){
+      explainTitle.textContent='Why:';
+      explainBody.textContent=Q.explain||'Short explanation not available.';
+      explainModal.style.display='flex';
+      explainNext.focus();
+    }
+
+    explainClose.addEventListener('click',()=>explainModal.style.display='none');
+    explainNext.addEventListener('click',()=>{explainModal.style.display='none';nextBtn.click();});
+
+    prevBtn.addEventListener('click',()=>{
+      idx=(idx>0)?idx-1:0;
+      localStorage.setItem(STORAGE_INDEX,idx);
+      renderQuestion(idx);
+    });
+    nextBtn.addEventListener('click',()=>{
+      idx=(idx<questions.length-1)?idx+1:questions.length-1;
+      localStorage.setItem(STORAGE_INDEX,idx);
+      renderQuestion(idx);
+    });
+
+    restartBtn.addEventListener('click',()=>{
+      points=0;streak=0;idx=0;answered={};
+      quizStartTime=Date.now();
+      localStorage.removeItem(STORAGE_POINTS);
+      localStorage.removeItem(STORAGE_STREAK);
+      localStorage.removeItem(STORAGE_INDEX);
+      localStorage.removeItem(STORAGE_ANSW);
+      renderScore();
+      renderQuestion(idx);
+      summaryEl.style.display='none';
+    });
+
+    submitBtn.addEventListener('click',()=>{
+      const total=questions.length;
+      let correctCount=0;let attempted=0;
+      for(let i=0;i<total;i++){
+        if(answered[i]){
+          attempted++;
+          if(answered[i].correct) correctCount++;
+        }
+      }
+      const wrongCount=total-correctCount;
+      const percent=total?Math.round((correctCount/total)*100):0;
+
+      const elapsedMs=Date.now()-quizStartTime;
+      const seconds=Math.floor(elapsedMs/1000);
+      const mins=Math.floor(seconds/60);
+      const remSec=seconds%60;
+      const timeStr=(mins>0?mins+" min ":"")+remSec+" sec";
+
+      let msg='';
+      if(percent<50){
+        msg="You’ve started learning the basics—review the questions and try again.";
+      }else{
+        msg="🎉 Strong forest awareness! Use it to protect trees and inspire others.";
+      }
+
+      summaryEl.innerHTML =
+        "<strong>Quiz Summary</strong><br>" +
+        "Correct answers: <strong>"+correctCount+"</strong> / "+total+"<br>" +
+        "Wrong answers: <strong>"+wrongCount+"</strong><br>" +
+        "Score: <strong>"+percent+"%</strong><br>" +
+        "Time taken: <strong>"+timeStr+"</strong><br><br>" +
+        msg;
+      summaryEl.style.display='block';
+    });
+
+    function renderLeaderboard(){
+      const raw=localStorage.getItem(STORAGE_LEADER);
+      let list=raw?JSON.parse(raw):[];
+      list.sort((a,b)=>b.score-a.score);
+      list=list.slice(0,3);
+      lbList.innerHTML='';
+      if(list.length===0){
+        lbList.innerHTML='<li style="color:#666">No scores yet — be the first!</li>';
+      }else{
+        list.forEach(item=>{
+          const li=document.createElement('li');
+          li.textContent=item.name+' — '+item.score+' pts';
+          lbList.appendChild(li);
+        });
+      }
+    }
+
+    function openLeaderboard(){
+      renderLeaderboard();
+      lbModal.style.display='flex';
+      lbNameInput.focus();
+    }
+
+    openLbBtn.addEventListener('click',openLeaderboard);
+    lbClose.addEventListener('click',()=>lbModal.style.display='none');
+
+    lbSaveBtn.addEventListener('click',()=>{
+      const name=lbNameInput.value.trim()||'Anonymous';
+      const raw=localStorage.getItem(STORAGE_LEADER);
+      let list=raw?JSON.parse(raw):[];
+      list.push({name,score:points,date:Date.now()});
+      list.sort((a,b)=>b.score-a.score);
+      list=list.slice(0,10);
+      localStorage.setItem(STORAGE_LEADER,JSON.stringify(list));
+      renderLeaderboard();
+      lbNameInput.value='';
+    });
+
+    replaceIconsBtn.addEventListener('click',()=>{
+      const anyImgs=document.querySelectorAll('.nav-card img');
+      if(anyImgs.length===0){
+        feedback.style.color='#b45309';
+        feedback.textContent='No nav images found to replace.';
+        setTimeout(()=>feedback.textContent='',2000);
+        return;
+      }
+      anyImgs.forEach(img=>{
+        const parent=img.parentElement;
+        if(!parent) return;
+        const i=document.createElement('i');
+        i.className='fas fa-tree';
+        i.style.fontSize='38px';
+        i.style.color='#bbf7d0';
+        i.style.padding='8px';
+        i.style.borderRadius='8px';
+        i.style.background='linear-gradient(180deg,rgba(255,255,255,0.08),rgba(0,0,0,0.18))';
+        i.style.boxShadow='0 10px 30px rgba(3,18,40,0.45)';
+        img.remove();
+        parent.insertBefore(i,parent.firstChild);
+      });
+      feedback.style.color='#b45309';
+      feedback.textContent='Nav images replaced with forest icons.';
+      setTimeout(()=>feedback.textContent='',2000);
+    });
+
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==='n' || e.key==='N') nextBtn.click();
+      if(e.key==='p' || e.key==='P') prevBtn.click();
+      if(e.key==='r' || e.key==='R') restartBtn.click();
+      if(e.key==='l' || e.key==='L') openLbBtn.click();
+    });
+
+    renderScore();
+    renderQuestion(idx);
+
+    window.addEventListener('click',(ev)=>{
+      if(ev.target===lbModal) lbModal.style.display='none';
+      if(ev.target===explainModal) explainModal.style.display='none';
+    });
+    window.addEventListener('keydown',(ev)=>{
+      if(ev.key==='Escape'){
+        lbModal.style.display='none';
+        explainModal.style.display='none';
+      }
+    });
+  })();
+</script>
+</body>
+</html>

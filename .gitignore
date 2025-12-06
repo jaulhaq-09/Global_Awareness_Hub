@@ -30,8 +30,6 @@ build/
 *~               # Temporary files on Linux/Unix systems
 *.swp            # Swap files created by editors like Vim
 
-# Webpack / Babel / TypeScript build directories
-public/
 
 # Temporary files created by npm/yarn
 package-lock.json

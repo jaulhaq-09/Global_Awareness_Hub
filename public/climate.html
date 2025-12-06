@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Climate Change - Global Awareness Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="style.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Inter",sans-serif;
+    font-size:clamp(14px,1.05vw,15px);
+    background:
+      linear-gradient(135deg,rgba(0,15,31,0.45),rgba(0,0,0,0.45)),
+      url('./climate.jpeg.jpg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:#0b1120;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  .container{max-width:1300px;margin:0 auto;padding:18px;}
+
+  .hero{
+    background:linear-gradient(135deg,rgba(15,23,42,0.97),rgba(8,47,73,0.97),rgba(37,99,235,0.96));
+    color:#e0f2fe;
+    text-align:center;
+    padding:clamp(2.6rem,6vw,3.5rem) clamp(1.4rem,5vw,2.4rem);
+    border-radius:24px;
+    margin-bottom:2.8rem;
+    box-shadow:0 22px 70px rgba(0,0,0,0.9);
+    position:relative;
+    overflow:hidden;
+    text-shadow:0 2px 8px rgba(0,0,0,0.65);
+  }
+  .hero::before{
+    content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(191,219,254,0.35),transparent);
+    animation:heroShimmer 4s infinite;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,4.2vw,3.2rem);
+    font-weight:800;
+    margin-bottom:0.35rem;
+    letter-spacing:-0.02em;
+  }
+  .hero-topic{
+    font-size:clamp(0.95rem,1.7vw,1.15rem);
+    font-weight:600;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:#bfdbfe;
+    margin-bottom:0.9rem;
+  }
+  .hero-subtitle{
+    font-size:clamp(1rem,2vw,1.35rem);
+    font-weight:300;
+    max-width:800px;
+    margin:0 auto 1.6rem;
+    opacity:0.96;
+  }
+  .intro-text{
+    max-width:820px;
+    margin:0 auto 2.4rem;
+    font-size:0.98rem;
+    font-weight:400;
+    color:#e0f2fe;
+    background:rgba(15,23,42,0.96);
+    border-radius:18px;
+    padding:1rem 1.4rem;
+    box-shadow:0 10px 28px rgba(0,0,0,0.7);
+    line-height:1.5;
+  }
+
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1.2rem;
+    max-width:780px;
+    margin:0 auto;
+  }
+  .stat-hero{
+    text-align:center;
+    padding:1rem;
+    background:rgba(15,23,42,0.9);
+    backdrop-filter:blur(16px);
+    border-radius:16px;
+    border:1px solid rgba(148,163,184,0.8);
+    color:#e0f2fe;
+    box-shadow:0 0 14px rgba(0,0,0,0.75);
+  }
+  .stat-hero-number{
+    font-size:clamp(1.6rem,3vw,2.6rem);
+    font-weight:800;
+    background:linear-gradient(135deg,#bae6fd,#ffffff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    display:block;
+  }
+  .stat-hero-label{font-size:0.9rem;opacity:0.95;font-weight:600;margin-top:0.3rem;}
+
+  .nav-grid{display:flex;justify-content:center;margin:2.4rem auto 0.6rem;max-width:900px;}
+  .nav-card{
+    background:radial-gradient(circle at top left,rgba(59,130,246,0.5),transparent 55%),
+               radial-gradient(circle at bottom right,rgba(56,189,248,0.6),transparent 55%),
+               rgba(15,23,42,0.98);
+    backdrop-filter:blur(22px);
+    border:1px solid rgba(96,165,250,0.9);
+    color:#e5f2ff;
+    padding:1.4rem 1.8rem;
+    border-radius:999px;
+    text-align:center;
+    cursor:pointer;
+    transition:all 0.25s ease;
+    box-shadow:0 18px 55px rgba(0,0,0,0.8);
+    display:flex;align-items:center;gap:0.8rem;
+  }
+  .nav-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 26px 80px rgba(0,0,0,1);}
+  .nav-icon{font-size:2rem;color:#bfdbfe;}
+  .nav-title{font-size:1rem;font-weight:650;letter-spacing:0.02em;}
+  .nav-hint{text-align:center;font-size:0.9rem;color:#e5e7eb;margin-bottom:1.4rem;opacity:0.9;}
+
+  .quick-nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:1rem;
+    margin:0 auto 2.6rem;
+    max-width:1000px;
+  }
+  .quick-nav-item{
+    min-width:130px;
+    padding:0.85rem 1.1rem;
+    border-radius:16px;
+    border:1px solid rgba(59,130,246,0.55);
+    background:linear-gradient(145deg,#e0f2fe,#f9fafb);
+    box-shadow:0 10px 28px rgba(15,23,42,0.6);
+    cursor:pointer;
+    text-align:center;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.35rem;
+  }
+  .quick-nav-item i{font-size:1.35rem;color:#0ea5e9;}
+  .quick-nav-item span{font-size:0.9rem;font-weight:650;color:#021319;}
+  .quick-nav-item:hover{transform:translateY(-3px);background:#bae6fd;box-shadow:0 18px 40px rgba(15,23,42,0.8);}
+  .quick-nav-item.active{
+    background:linear-gradient(145deg,#0ea5e9,#1d4ed8);
+    color:#e0f2fe;border-color:rgba(59,130,246,1);
+  }
+  .quick-nav-item.active i{color:#e0f2fe;}
+  .quick-nav-item.active span{color:#f9fafb;}
+
+  .content-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:2rem;
+    margin-bottom:3.2rem;
+  }
+  .content-card{
+    background:rgba(248,250,252,0.98);
+    backdrop-filter:blur(30px);
+    border-radius:20px;
+    padding:1.9rem 1.7rem;
+    box-shadow:0 20px 65px rgba(15,23,42,0.7),0 6px 18px rgba(15,23,42,0.4);
+    transition:all 0.3s ease;
+    border:1px solid rgba(191,219,254,0.9);
+    position:relative;overflow:hidden;
+  }
+  .content-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,#38bdf8,#22c55e,#38bdf8,#22c55e);
+    animation:cardShimmer 4s infinite;
+  }
+  .content-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 28px 80px rgba(15,23,42,0.85),0 14px 30px rgba(15,23,42,0.5);}
+  .card-title{
+    color:#0b1120;font-size:clamp(1.35rem,2vw,1.7rem);
+    font-weight:800;margin-bottom:1.2rem;
+    display:flex;align-items:center;gap:0.6rem;
+  }
+  .card-title i{color:#0ea5e9;}
+  .card-list{list-style:none;padding:0;}
+  .card-list li{
+    background:linear-gradient(135deg,#e0f2fe,#f9fafb);
+    margin:0.9rem 0;padding:1.1rem 1.3rem;
+    border-radius:14px;border-left:4px solid #0ea5e9;
+    transition:all 0.25s ease;color:#0b1120;
+    font-weight:550;font-size:0.95rem;
+    box-shadow:0 4px 15px rgba(15,23,42,0.25);
+    position:relative;cursor:pointer;
+  }
+  .card-list li::before{content:'❄️';margin-right:0.7rem;font-size:1.15rem;}
+  .card-list li:hover{
+    transform:translateX(8px);
+    box-shadow:0 14px 30px rgba(15,23,42,0.45);
+    background:linear-gradient(135deg,#bae6fd,#ccfbf1);
+    border-left-color:#22c55e;
+  }
+
+  .video-section{
+    background:rgba(248,250,252,0.97);
+    backdrop-filter:blur(30px);
+    padding:2.2rem 2rem;
+    border-radius:22px;
+    margin:3rem 0;
+    box-shadow:0 26px 90px rgba(15,23,42,0.85);
+    border:1px solid rgba(191,219,254,0.9);
+  }
+  .video-title{
+    font-size:clamp(1.6rem,3vw,2.1rem);
+    font-weight:800;text-align:center;
+    margin-bottom:0.9rem;color:#0b1120;
+  }
+  .video-desc{
+    text-align:center;font-size:0.98rem;max-width:780px;
+    margin:0 auto 1.8rem;color:#1e293b;font-weight:500;
+  }
+  .video-wrapper{
+    max-width:800px;margin:0 auto;border-radius:18px;overflow:hidden;
+    box-shadow:0 20px 60px rgba(15,23,42,0.85);
+    border:1px solid rgba(56,189,248,0.7);background:#000;
+  }
+  .video-wrapper video{width:100%;height:340px;object-fit:cover;display:block;}
+
+  .gallery-section{
+    background:rgba(248,250,252,0.97);
+    backdrop-filter:blur(32px);
+    padding:3.2rem 2.4rem;
+    border-radius:24px;
+    margin:3.5rem 0;
+    box-shadow:0 30px 100px rgba(15,23,42,0.85);
+    border:1px solid rgba(191,219,254,0.95);
+  }
+  .gallery-title{text-align:center;font-size:clamp(1.8rem,3.2vw,2.4rem);color:#0b1120;margin-bottom:2.4rem;font-weight:800;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.8rem;}
+  .gallery-item{
+    display:flex;flex-direction:column;border-radius:20px;overflow:hidden;
+    box-shadow:0 24px 80px rgba(15,23,42,0.75);transition:all 0.5s ease;
+    cursor:pointer;position:relative;border:2px solid rgba(255,255,255,0.98);background:#ffffff;
+  }
+  .gallery-item img{width:100%;height:210px;object-fit:cover;}
+  .gallery-caption{padding:0.65rem 0.8rem;font-size:0.9rem;font-weight:600;color:#0b1120;text-align:center;}
+  .gallery-item:hover{transform:scale(1.04) translateY(-8px);box-shadow:0 46px 140px rgba(15,23,42,0.95);border-color:rgba(59,130,246,1);}
+
+  .impact-section{
+    background:rgba(248,250,252,0.97);
+    backdrop-filter:blur(32px);
+    padding:3rem 2.3rem;
+    border-radius:24px;
+    margin:3.8rem 0;
+    text-align:center;
+    box-shadow:0 30px 100px rgba(15,23,42,0.9);
+    border:1px solid rgba(191,219,254,0.95);
+    position:relative;overflow:hidden;
+  }
+  .impact-section::before{
+    content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+    background:radial-gradient(circle,rgba(56,189,248,0.35) 0%,transparent 70%);
+    animation:float 20s infinite linear;
+  }
+  .impact-title{color:#0b1120;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:800;margin-bottom:1rem;position:relative;z-index:2;}
+  .impact-stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:2rem;margin:2.2rem auto;max-width:1000px;
+  }
+  .impact-stat{
+    background:linear-gradient(135deg,rgba(255,255,255,0.97),rgba(219,234,254,0.98));
+    padding:1.8rem 1.6rem;border-radius:20px;
+    box-shadow:0 20px 60px rgba(15,23,42,0.55);
+    border:1px solid rgba(255,255,255,0.98);
+    transition:all 0.3s ease;
+  }
+  .impact-stat:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(15,23,42,0.85);}
+  .impact-number{
+    font-size:clamp(1.9rem,3.4vw,2.6rem);
+    font-weight:900;
+    background:linear-gradient(135deg,#38bdf8,#22c55e);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;margin-bottom:0.6rem;
+  }
+  .impact-label{font-size:0.98rem;color:#1f2937;font-weight:700;}
+
+  .feedback-section{
+    background:radial-gradient(circle at top left,rgba(219,234,254,0.7),transparent 55%),
+               radial-gradient(circle at bottom right,rgba(204,251,241,0.7),transparent 55%),
+               rgba(255,255,255,0.98);
+    backdrop-filter:blur(34px);
+    padding:2.8rem 2.3rem;
+    border-radius:26px;
+    margin:3.5rem 0;
+    box-shadow:0 32px 110px rgba(15,23,42,0.9);
+    border:1px solid rgba(255,255,255,0.98);
+    position:relative;overflow:hidden;
+  }
+  .feedback-section::before{
+    content:"";position:absolute;inset:-40%;
+    background:radial-gradient(circle,rgba(255,255,255,0.22) 0,transparent 70%);
+    opacity:0.35;pointer-events:none;
+  }
+  .feedback-title{
+    position:relative;font-size:clamp(1.9rem,3vw,2.5rem);
+    font-weight:800;text-align:center;color:#0f172a;margin-bottom:0.4rem;
+  }
+  .feedback-subtitle{
+    position:relative;text-align:center;max-width:720px;
+    margin:0 auto 2rem;font-size:0.98rem;color:#4b5563;
+  }
+  .feedback-layout{
+    position:relative;display:grid;
+    grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr);
+    gap:1.8rem;align-items:flex-start;
+  }
+  .feedback-form{
+    display:flex;flex-direction:column;gap:1rem;
+    background:rgba(255,255,255,0.98);border-radius:18px;
+    padding:1.4rem 1.5rem;box-shadow:0 20px 60px rgba(15,23,42,0.28);
+    border:1px solid rgba(148,163,184,0.7);
+  }
+  .feedback-row{display:flex;gap:0.9rem;flex-wrap:wrap;}
+  .feedback-form input,.feedback-form select,.feedback-form textarea{
+    width:100%;padding:0.75rem 0.9rem;border-radius:10px;
+    border:1px solid rgba(148,163,184,0.7);
+    font-size:0.96rem;font-family:inherit;background:#eff6ff;
+    transition:border-color 0.2s,box-shadow 0.2s,background 0.2s;
+  }
+  .feedback-form input:focus,
+  .feedback-form select:focus,
+  .feedback-form textarea:focus{
+    outline:none;border-color:#38bdf8;
+    box-shadow:0 0 0 2px rgba(59,130,246,0.5);
+    background:#ffffff;
+  }
+  .feedback-form textarea{min-height:120px;resize:vertical;}
+  .feedback-actions{display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;}
+  .feedback-form button{
+    padding:0.8rem 1.9rem;border-radius:999px;border:none;cursor:pointer;
+    background:linear-gradient(135deg,#38bdf8,#22c55e);
+    color:#ecfeff;font-weight:750;font-size:0.98rem;
+    box-shadow:0 18px 55px rgba(15,23,42,0.55);
+    display:inline-flex;align-items:center;gap:0.4rem;
+    transition:transform 0.15s ease,box-shadow 0.15s ease;
+  }
+  .feedback-form button:hover{transform:translateY(-2px);box-shadow:0 24px 70px rgba(15,23,42,0.8);}
+  .feedback-info{font-size:0.9rem;color:#166534;display:none;}
+  .feedback-side{display:flex;flex-direction:column;gap:1rem;}
+  .feedback-stat-card{
+    background:rgba(15,23,42,0.98);color:#f9fafb;
+    border-radius:16px;padding:1.1rem 1.2rem;
+    box-shadow:0 18px 55px rgba(0,0,0,0.85);
+  }
+  .feedback-stat-card h3{margin:0 0 0.6rem 0;font-size:1rem;letter-spacing:0.01em;}
+  .feedback-stat-card ul{margin:0;padding-left:1.1rem;font-size:0.9rem;}
+  .feedback-stat-card li{margin-bottom:0.35rem;}
+  .feedback-highlight{
+    background:linear-gradient(135deg,#fef9c3,#e0f2fe);
+    border-radius:14px;padding:0.85rem 1rem;
+    border:1px dashed rgba(59,130,246,0.7);
+    font-size:0.9rem;color:#1f2937;
+  }
+  .highlight-label{display:inline-block;font-weight:700;margin-bottom:0.3rem;}
+
+  #quiz-section{
+    max-width:1100px;
+    margin:2.5rem auto 3.5rem auto;
+    padding:1.8rem;
+    border-radius:12px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.97),rgba(219,234,254,0.97));
+    border:1px solid rgba(148,163,184,0.7);
+    box-shadow:0 20px 60px rgba(15,23,42,0.12);
+  }
+
+  @media(max-width:900px){.content-grid{grid-template-columns:1fr;}}
+  @media(max-width:768px){
+    .container{padding:14px;}
+    .hero{padding:2.2rem 1.4rem;}
+    .content-card,.video-section,.gallery-section,.impact-section,.feedback-section{padding:1.8rem 1.5rem;}
+    .video-wrapper video{height:220px;}
+    .gallery-item img{height:190px;}
+  }
+
+  @keyframes heroShimmer{0%{left:-100%;}100%{left:100%;}}
+  @keyframes cardShimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+  @keyframes float{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- HERO -->
+    <section class="hero" aria-label="Climate change introduction">
+      <h1>🌍 Climate Change & Melting Glaciers</h1>
+      <div class="hero-topic">Subtopic: Ice, Water and a Warming World</div>
+      <p class="hero-subtitle">Earth is warming, ice is melting, and seas are rising—but informed choices today can still protect tomorrow’s water, land, and life.</p>
+      <p class="intro-text">
+        Climate change is the long-term warming of our planet and shifts in weather patterns, driven mainly by greenhouse gases from burning coal, oil, and gas.
+        Glaciers and polar ice melt, oceans expand, and extreme events grow stronger, affecting people, animals, and water resources everywhere.
+      </p>
+      <div class="hero-stats" role="list">
+        <div class="stat-hero" role="listitem">
+          <span class="stat-hero-number">1.1 °C+</span>
+          <span class="stat-hero-label">Average global temperature rise since pre-industrial times.</span>
+        </div>
+        <div class="stat-hero" role="listitem">
+          <span class="stat-hero-number">> 90%</span>
+          <span class="stat-hero-label">Recent warming is extremely likely due to human activities.</span>
+        </div>
+        <div class="stat-hero" role="listitem">
+          <span class="stat-hero-number">Rising seas</span>
+          <span class="stat-hero-label">Melting glaciers and warmer oceans are pushing sea levels higher each year.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAV -->
+    <nav class="nav-grid" aria-label="Quick navigation to sections">
+      <div class="nav-card" id="open-quick-nav">
+        <i class="fas fa-compass nav-icon" aria-hidden="true"></i>
+        <div class="nav-title">Explore Climate Change Sections</div>
+      </div>
+    </nav>
+    <p class="nav-hint">Scroll or tap a card below to jump to basics, causes, glacier impacts, solutions, daily actions, extra actions, media, feedback, and quiz.</p>
+
+    <div id="quick-nav" class="quick-nav" aria-label="Section shortcuts">
+      <button class="quick-nav-item" data-target="basics-card">
+        <i class="fas fa-globe-europe"></i>
+        <span>Basics</span>
+      </button>
+      <button class="quick-nav-item" data-target="causes-card">
+        <i class="fas fa-industry"></i>
+        <span>Causes</span>
+      </button>
+      <button class="quick-nav-item" data-target="glacier-card">
+        <i class="fas fa-mountain"></i>
+        <span>Ice & Seas</span>
+      </button>
+      <button class="quick-nav-item" data-target="solutions-card">
+        <i class="fas fa-leaf"></i>
+        <span>Big Solutions</span>
+      </button>
+      <button class="quick-nav-item" data-target="actions-card">
+        <i class="fas fa-walking"></i>
+        <span>Everyday Actions</span>
+      </button>
+      <button class="quick-nav-item" data-target="extra-actions-card">
+        <i class="fas fa-users"></i>
+        <span>More Actions</span>
+      </button>
+      <button class="quick-nav-item" data-target="video-section">
+        <i class="fas fa-video"></i>
+        <span>Awareness</span>
+      </button>
+      <button class="quick-nav-item" data-target="gallery-section">
+        <i class="fas fa-images"></i>
+        <span>Gallery</span>
+      </button>
+      <button class="quick-nav-item" data-target="feedback-section">
+        <i class="fas fa-comment-dots"></i>
+        <span>Feedback</span>
+      </button>
+      <button class="quick-nav-item" data-target="quiz-section">
+        <i class="fas fa-question-circle"></i>
+        <span>Quiz</span>
+      </button>
+    </div>
+
+    <!-- CONTENT GRID -->
+    <section class="content-grid" aria-label="Climate change information">
+      <article class="content-card" id="basics-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-globe-europe"></i> Climate Basics</h3>
+        <ul class="card-list">
+          <li>Climate is the average of weather over many years; climate change means those long-term patterns are shifting.</li>
+          <li>Today’s warming is mainly caused by human-made greenhouse gases, not just natural cycles.</li>
+          <li>Key gases include carbon dioxide, methane, and nitrous oxide, which trap extra heat near Earth’s surface.</li>
+          <li>Even a small rise in global temperature can greatly affect storms, rainfall, ice, and ecosystems.</li>
+          <li>Limiting warming quickly reduces the chance of crossing dangerous climate “tipping points”.</li>
+        </ul>
+      </article>
+
+      <article class="content-card" id="causes-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-industry"></i> Main Human Causes</h3>
+        <ul class="card-list">
+          <li>Burning coal, oil, and gas for electricity, transport, and industry is the largest source of CO₂.</li>
+          <li>Clearing forests removes trees that would absorb carbon, and often releases stored carbon back into the air.</li>
+          <li>Agriculture and livestock add methane and nitrous oxide, powerful heat-trapping gases.</li>
+          <li>Industrial gases and some coolants can warm the climate thousands of times more per kilogram than CO₂.</li>
+          <li>High consumption and waste—fast fashion, short flights, wasted food—push emissions even higher.</li>
+        </ul>
+      </article>
+
+      <article class="content-card" id="glacier-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-mountain"></i> Glaciers, Ice & Water</h3>
+        <ul class="card-list">
+          <li>Mountain glaciers and polar ice sheets are shrinking as temperatures rise, feeding extra water into rivers and oceans.</li>
+          <li>Sea-level rise comes from melting ice and from seawater expanding as it warms.[web:293][web:296][web:306]</li>
+          <li>Communities near coasts and low-lying islands face more flooding, erosion, and saltwater intrusion.</li>
+          <li>Many rivers in Asia, Europe, and South America depend on glacier melt, so long-term loss threatens water supplies.</li>
+          <li>Protecting ice means cutting emissions fast today, not waiting for future technology alone.</li>
+        </ul>
+      </article>
+
+      <article class="content-card" id="solutions-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-leaf"></i> Big-Picture Solutions</h3>
+        <ul class="card-list">
+          <li>Switch energy systems from fossil fuels to renewables like solar, wind, and hydropower.</li>
+          <li>Improve efficiency in buildings, transport, and industry to use less energy for the same work.</li>
+          <li>Protect and restore forests, wetlands, and mangroves that naturally store carbon.</li>
+          <li>Redesign cities around public transport, cycling, and walking instead of car-only growth.</li>
+          <li>Support fair climate policies so changes are fast, practical, and just for all communities.</li>
+        </ul>
+      </article>
+
+      <article class="content-card" id="actions-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-walking"></i> Everyday Climate Actions</h3>
+        <ul class="card-list">
+          <li>Walk, cycle, carpool, or use public transport instead of short solo car rides or frequent flights.</li>
+          <li>Save electricity using efficient lights, turning devices fully off, and avoiding unnecessary cooling.</li>
+          <li>Eat more plant-based meals and reduce food waste by planning portions and storing food properly.</li>
+          <li>Use and reuse items longer, repair when possible, and cut single-use plastics.</li>
+          <li>Join local clean-ups, tree-planting, and climate clubs, and talk about climate solutions with friends and family.</li>
+        </ul>
+      </article>
+
+      <!-- NEW TOPIC AFTER EVERYDAY CLIMATE ACTIONS -->
+      <article class="content-card" id="extra-actions-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-users"></i> Campus & Community Projects</h3>
+        <ul class="card-list">
+          <li>Run campus campaigns on saving energy, avoiding plastic, and using public transport, and track how much emissions your school avoids.</li>
+          <li>Start peer-education clubs that explain climate science, myths vs facts, and easy low-carbon habits to younger students.</li>
+          <li>Work with local government or NGOs on tree-planting, wetland restoration, or lake clean-ups that also reduce flood and heat risks.</li>
+          <li>Create simple climate tools—posters, reels, websites, or apps—that help people measure and reduce their own carbon footprint.</li>
+          <li>Use project work to survey how climate change is affecting local water, crops, or health, and present solutions to teachers and leaders.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="video-section" id="video-section" aria-label="Climate change awareness video">
+      <h2 class="video-title">🎬 Melting Glaciers, Rising Seas</h2>
+      <p class="video-desc">
+        This short video shows how greenhouse gases warm the planet, how ice and oceans respond, and what schools and communities can do to cut emissions together.
+      </p>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="cli-vid.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="gallery-section" aria-label="Climate change awareness gallery">
+      <h2 class="gallery-title">📸 Glaciers, Water & Action</h2>
+      <div class="gallery-grid">
+        <figure class="gallery-item" tabindex="0">
+          <img src="ac.jpg" alt="Students holding climate action posters" />
+          <figcaption class="gallery-caption">Campus climate action campaign</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="extrem.jpg" alt="Flooded street after heavy rainfall" />
+          <figcaption class="gallery-caption">Extreme rainfall and flooding</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="school.jpg" alt="Solar panels on a school roof" />
+          <figcaption class="gallery-caption">School powered by rooftop solar</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="sm.jpg" alt="Farmers in a field using climate-smart agriculture" />
+          <figcaption class="gallery-caption">Climate-smart farming in action</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="nepal.jpg" alt="Students cleaning trash from a riverbank" />
+          <figcaption class="gallery-caption">River and lake clean-up drive</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="ti.jpg" alt="Poster with low-carbon lifestyle tips" />
+          <figcaption class="gallery-caption">Simple tips for low-carbon living</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="sem.jpg" alt="School seminar on climate change and its effects" />
+          <figcaption class="gallery-caption">Seminar: climate science and justice</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="savee.jpg" alt="Student closing a running tap to save water" />
+          <figcaption class="gallery-caption">Saving water, saving energy</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="impact-section" aria-label="Climate change impact">
+      <h2 class="impact-title">Why Every Degree – and Every Drop – Matters</h2>
+      <p style="font-size:0.98rem;color:#1e293b;max-width:780px;margin:0 auto 2.2rem;font-weight:500;">
+        Scientists show that each extra fraction of a degree of warming brings more intense heatwaves, heavier rains, faster glacier melt, and higher seas—but quick emission cuts can still limit the worst outcomes.
+        Meeting climate goals needs strong policies plus millions of people choosing cleaner, low-carbon options that also protect water and ice.
+      </p>
+      <div class="impact-stats">
+        <div class="impact-stat">
+          <span class="impact-number">1.5 °C</span>
+          <div class="impact-label">Safer limit compared with 2 °C for coasts, glaciers, and coral reefs.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">Net-zero</span>
+          <div class="impact-label">Cut emissions and balance what remains so extra warming slows.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">Cities</span>
+          <div class="impact-label">Urban transport and buildings can make big emission cuts fast.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">Nature</span>
+          <div class="impact-label">Forests, wetlands, and oceans absorb a large share of CO₂.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">Together</span>
+          <div class="impact-label">Collective action multiplies the impact of each small step.</div>
+        </div>
+      </div>
+    </section>
+
+<!-- QUIZ SECTION -->
+<section id="quiz-section" aria-label="Climate change quiz">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:1rem;">
+    <h2 style="font-size:1.35rem;margin:0;color:#071428">Test Your Knowledge — Climate Quiz</h2>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <div id="quiz-points" style="background:#020617;color:#f9fafb;padding:.5rem .8rem;border-radius:10px;font-weight:700">Points: 0</div>
+      <div id="quiz-streak" style="background:#1e293b;color:#e5e7eb;padding:.5rem .8rem;border-radius:10px;font-weight:700">Streak: 0</div>
+      <button id="replace-nav-icons" title="Replace nav photos with icons" style="background:transparent;border:1px solid rgba(59,130,246,0.6);padding:.4rem .6rem;border-radius:8px;cursor:pointer">Use Icons</button>
+      <button id="open-leaderboard" title="Open leaderboard" style="background:transparent;border:1px solid rgba(59,130,246,0.6);padding:.4rem .6rem;border-radius:8px;cursor:pointer">Leaderboard</button>
+    </div>
+  </div>
+
+  <div id="quiz-inner" style="min-height:160px;"></div>
+
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;align-items:center;">
+    <button id="quiz-prev" style="background:#e0f2fe;color:#111827;padding:.6rem 1rem;border-radius:10px;border:none;cursor:pointer">Previous</button>
+    <button id="quiz-next" style="background:linear-gradient(90deg,#38bdf8,#22c55e);color:#ecfeff;padding:.6rem 1rem;border-radius:10px;border:none;cursor:pointer;font-weight:700">Next</button>
+    <button id="quiz-submit" style="background:#16a34a;color:#fff;padding:.6rem 1rem;border-radius:10px;border:none;cursor:pointer;margin-left:8px;font-weight:700">Submit Quiz</button>
+    <button id="quiz-restart" style="margin-left:auto;background:transparent;border:1px solid rgba(148,163,184,0.9);padding:.5rem .9rem;border-radius:10px;cursor:pointer;font-weight:600">Restart Quiz</button>
+  </div>
+
+  <div id="quiz-feedback" aria-live="polite" style="margin-top:1rem;font-weight:700;color:#7c2d12"></div>
+
+  <div id="quiz-summary" style="margin-top:1.2rem;padding:0.9rem 1rem;border-radius:10px;background:#fef9c3;color:#1f2937;display:none;"></div>
+</section>
+
+<!-- Leaderboard modal -->
+<div id="leaderboard-modal" role="dialog" aria-modal="true" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:9999;">
+  <div style="width:calc(100% - 60px);max-width:520px;background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(59,130,246,0.6);box-shadow:0 30px 90px rgba(3,18,40,0.25);margin:auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <h3 style="margin:0;color:#071428">Leaderboard — Top Scores</h3>
+      <button id="lb-close" style="background:transparent;border:none;font-weight:700;cursor:pointer">✕</button>
+    </div>
+    <ol id="leaderboard-list" style="margin-top:12px;padding-left:18px;color:#071428;font-weight:700"></ol>
+    <div style="display:flex;gap:8px;margin-top:12px;align-items:center;">
+      <input id="lb-name" placeholder="Your name" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(59,130,246,0.6)" />
+      <button id="lb-save" style="background:linear-gradient(90deg,#38bdf8,#22c55e);border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700;color:#ecfeff">Save</button>
+    </div>
+    <div style="margin-top:10px;text-align:right;color:#666;font-size:0.9rem">Top 3 scores stored locally.</div>
+  </div>
+</div>
+
+<!-- Explanation modal -->
+<div id="explain-modal" role="dialog" aria-modal="true" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:10000;">
+  <div style="width:calc(100% - 60px);max-width:640px;background:#020617;color:#e5e7eb;border-radius:12px;padding:18px;border:1px solid rgba(59,130,246,0.6);box-shadow:0 30px 90px rgba(0,0,0,0.8);margin:auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <h3 id="explain-title" style="margin:0">Answer explanation</h3>
+      <button id="explain-close" style="background:transparent;border:none;color:#e5e7eb;font-weight:700;cursor:pointer">✕</button>
+    </div>
+    <div id="explain-body" style="margin-top:12px;font-size:1rem;line-height:1.5;color:#e0f2fe"></div>
+    <div style="text-align:right;margin-top:12px;">
+      <button id="explain-next" style="background:#38bdf8;border:none;color:#0b1120;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEEDBACK -->
+<section class="feedback-section" id="feedback-section" aria-label="Share your thoughts on climate change">
+  <h2 class="feedback-title">💬 Share Your Thoughts</h2>
+  <p class="feedback-subtitle">
+    Tell how this climate hub changed your view of glaciers, water, and daily habits—or suggest ideas to make your campus more climate-friendly.
+  </p>
+
+  <div class="feedback-layout">
+    <form class="feedback-form" id="feedback-form">
+      <div class="feedback-row">
+        <input type="text" name="name" placeholder="Your name" aria-label="Your name">
+        <input type="email" name="email" placeholder="Email (optional)" aria-label="Your email">
+      </div>
+
+      <div class="feedback-row">
+        <select name="mood" aria-label="How do you feel about this page?">
+          <option value="">How was this page?</option>
+          <option value="excellent">🌟 Very inspiring</option>
+          <option value="good">👍 Good reminder</option>
+          <option value="ok">🙂 Informative</option>
+          <option value="bad">😕 Needs improvement</option>
+        </select>
+      </div>
+
+      <textarea name="message" placeholder="Write your feedback, climate ideas, or examples of actions already happening in your school or city..."></textarea>
+
+      <div class="feedback-actions">
+        <button type="submit" id="feedback-submit">
+          <i class="fas fa-paper-plane"></i>&nbsp;Send Feedback
+        </button>
+        <span id="feedback-info" class="feedback-info">Thanks for speaking up for the planet! 💚</span>
+      </div>
+    </form>
+
+    <div class="feedback-side">
+      <div class="feedback-stat-card">
+        <h3>Why your voice matters</h3>
+        <ul>
+          <li>Shows which climate topics students find confusing or exciting.</li>
+          <li>Helps teachers and clubs design stronger climate projects.</li>
+          <li>Encourages friends to move from worry to real action together.</li>
+        </ul>
+      </div>
+      <div class="feedback-highlight">
+        <span class="highlight-label">Small steps, big change</span>
+        <p>Switching off a light, choosing a bus, or planting a tree seems small alone—but multiplied across millions of people, it helps bend the emissions curve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </div>
+
+<!-- ===== Consolidated script: feedback, quiz, leaderboard, streak, plus missing behavior (smooth scroll & on-scroll highlight) ===== -->
+<script>
+/* ========== Helper: postJson & server submission for feedback ========== */
+async function postJson(url, payload) {
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    return res.ok;
+  } catch (err) {
+    console.error('Request failed:', err);
+    return false;
+  }
+}
+
+async function sendFeedbackToServer(entry) {
+  return await postJson('/api/feedback', entry);
+}
+
+/* ========== Feedback form wiring ========== */
+document.addEventListener('DOMContentLoaded', () => {
+  const fbForm = document.getElementById('feedback-form');
+  const fbInfo = document.getElementById('feedback-info');
+  if (!fbForm) return;
+
+  fbForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(fbForm);
+    const entry = {
+      topic: 'climate',
+      name: (formData.get('name') || '').trim(),
+      email: (formData.get('email') || '').trim(),
+      mood: (formData.get('mood') || '').trim(),
+      message: (formData.get('message') || '').trim(),
+      createdAt: new Date().toISOString()
+    };
+
+    if (!entry.message) {
+      if (fbInfo) {
+        fbInfo.textContent = 'Please write some feedback before sending.';
+        fbInfo.style.display = 'inline';
+        setTimeout(() => { fbInfo.style.display = 'none'; }, 3000);
+      }
+      return;
+    }
+
+    const ok = await sendFeedbackToServer(entry);
+    if (fbInfo) {
+      fbInfo.textContent = ok ? 'Feedback sent! 💚' : 'Could not send feedback. Please try again later.';
+      fbInfo.style.display = 'inline';
+      setTimeout(() => { fbInfo.style.display = 'none'; }, 4000);
+    }
+    if (ok) fbForm.reset();
+  });
+});
+
+/* ========== Daily login streak + Quiz system (self-contained IIFE) ========== */
+(function () {
+  const LOGIN_KEY = "daily_login_last";
+  const LOGIN_STREAK = "daily_login_streak";
+  let lastLogin = localStorage.getItem(LOGIN_KEY);
+  let streakLogin = parseInt(localStorage.getItem(LOGIN_STREAK)) || 0;
+  let today = new Date().toDateString();
+  let yesterday = new Date(Date.now() - 86400000).toDateString();
+
+  if (lastLogin !== today) {
+    if (lastLogin === yesterday) streakLogin += 1;
+    else streakLogin = 1;
+    localStorage.setItem(LOGIN_KEY, today);
+    localStorage.setItem(LOGIN_STREAK, streakLogin);
+  }
+
+  const questions = [
+    { q:"What is climate change?", opts:["Weather on one rainy day","Long-term shifts in temperature and weather patterns","Only the ozone hole","Just natural ice ages"], a:1, explain:"Climate change refers to long-term changes in averages of temperature and weather over decades or longer." },
+    { q:"Which gas is the biggest driver of current warming?", opts:["Oxygen","Carbon dioxide from burning fossil fuels","Helium","Neon"], a:1, explain:"Rising CO₂ levels from coal, oil, and gas are the main cause of recent warming." },
+    { q:"Which activity adds the MOST greenhouse gases?", opts:["Walking to school","Burning fossil fuels for electricity and transport","Drying clothes in the sun","Planting trees"], a:1, explain:"Energy and transport based on coal, oil, and gas dominate global emissions." },
+    { q:"One clear effect of climate change on water is:", opts:["More stable sea level","Melting glaciers and rising seas","Instant snow everywhere","No more rainfall"], a:1, explain:"Warming melts land ice and expands seawater, which raises sea level." },
+    { q:"Why is deforestation bad for the climate?", opts:["Trees make noise","Trees absorb CO₂, so cutting them adds greenhouse gases","Forests stop rainfall","Wood cannot be used"], a:1, explain:"Forests store carbon; when removed or burned, that carbon is released." },
+    { q:"Which is a lower-carbon travel choice?", opts:["Short solo car rides every day","Walking, cycling, or public transport when possible","Frequent short flights","Leaving engines idling"], a:1, explain:"Active and shared transport reduce fuel use and emissions." },
+    { q:"How can food choices help the climate?", opts:["Throwing away leftovers","Eating more plant-based meals and wasting less food","Always choosing air-freighted snacks","Ignoring expiry dates"], a:1, explain:"Plant-rich diets and less waste cut emissions from farming and land use." },
+    { q:"What does \"net-zero\" emissions mean?", opts:["No electricity","Balancing remaining emissions with removals so the total added is zero","No factories","Only tree planting"], a:1, explain:"Net-zero means deep cuts plus removing the last bit of CO₂ we still emit." },
+    { q:"Which home action helps fight climate change?", opts:["Leaving lights on","Using efficient LEDs and turning devices fully off","Keeping old leaky appliances","Ignoring energy bills"], a:1, explain:"Efficiency and switching off reduce power use and emissions." },
+    { q:"Besides lifestyle changes, what else is powerful for climate action?", opts:["Doing nothing","Spreading myths","Supporting climate-friendly policies and community projects","Only blaming others"], a:2, explain:"Policies and collective projects can change whole systems quickly." }
+  ];
+
+  const STORAGE_POINTS = 'climate_quiz_points_glacier_v1';
+  const STORAGE_STREAK = 'climate_quiz_streak_glacier_v1';
+  const STORAGE_INDEX  = 'climate_quiz_index_glacier_v1';
+  const STORAGE_ANSW   = 'climate_quiz_answered_glacier_v1';
+  const STORAGE_LEADER = 'climate_quiz_leaderboard_glacier_v1';
+
+  let points   = parseInt(localStorage.getItem(STORAGE_POINTS)) || 0;
+  let streak   = parseInt(localStorage.getItem(STORAGE_STREAK)) || 0;
+  let idx      = parseInt(localStorage.getItem(STORAGE_INDEX))  || 0;
+  let answered = JSON.parse(localStorage.getItem(STORAGE_ANSW) || '{}');
+  let quizStartTime = Date.now();
+
+  const wrap       = document.getElementById('quiz-inner');
+  const ptsEl      = document.getElementById('quiz-points');
+  const streakEl   = document.getElementById('quiz-streak');
+  const prevBtn    = document.getElementById('quiz-prev');
+  const nextBtn    = document.getElementById('quiz-next');
+  const restartBtn = document.getElementById('quiz-restart');
+  const submitBtn  = document.getElementById('quiz-submit');
+  const feedback   = document.getElementById('quiz-feedback');
+  const summaryEl  = document.getElementById('quiz-summary');
+
+  const lbModal    = document.getElementById('leaderboard-modal');
+  const lbList     = document.getElementById('leaderboard-list');
+  const lbClose    = document.getElementById('lb-close');
+  const lbSaveBtn  = document.getElementById('lb-save');
+  const lbNameInput= document.getElementById('lb-name');
+  const openLbBtn  = document.getElementById('open-leaderboard');
+
+  const explainModal = document.getElementById('explain-modal');
+  const explainTitle = document.getElementById('explain-title');
+  const explainBody  = document.getElementById('explain-body');
+  const explainClose = document.getElementById('explain-close');
+  const explainNext  = document.getElementById('explain-next');
+
+  const replaceIconsBtn = document.getElementById('replace-nav-icons');
+
+  (function renderDailyStreakBox() {
+    try{
+      const quizSection = document.getElementById('quiz-section');
+      if(quizSection){
+        const streakBox = document.createElement("div");
+        streakBox.style.cssText="background:#020617;color:#f9fafb;padding:8px 12px;border-radius:8px;font-weight:700;margin-bottom:10px;text-align:center;";
+        streakBox.textContent="🔥 Daily Login Streak: "+streakLogin+" day"+(streakLogin===1?"":"s");
+        quizSection.prepend(streakBox);
+      }
+    }catch(e){console.error(e);}
+  })();
+
+  function saveState(){
+    localStorage.setItem(STORAGE_POINTS,points);
+    localStorage.setItem(STORAGE_STREAK,streak);
+    localStorage.setItem(STORAGE_INDEX,idx);
+    localStorage.setItem(STORAGE_ANSW,JSON.stringify(answered));
+  }
+
+  function renderScore(){
+    ptsEl.textContent='Points: '+points;
+    streakEl.textContent='Streak: '+streak;
+  }
+
+  function renderQuestion(i){
+    const Q = questions[i];
+    wrap.innerHTML='';
+    if(!Q){wrap.textContent='No questions configured.';return;}
+
+    const qBox=document.createElement('div');
+    qBox.style.padding='0.8rem';
+    const qTitle=document.createElement('div');
+    qTitle.textContent=(i+1)+'. '+Q.q;
+    qTitle.style.fontWeight='800';
+    qTitle.style.marginBottom='0.8rem';
+    qTitle.style.color='#071428';
+    qTitle.style.fontSize='1.05rem';
+    qTitle.style.lineHeight='1.35';
+    qBox.appendChild(qTitle);
+
+    const list=document.createElement('div');
+    list.style.display='grid';
+    list.style.gridTemplateColumns='1fr';
+    list.style.gap='0.6rem';
+
+    Q.opts.forEach((opt,j)=>{
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='quiz-opt';
+      btn.textContent=opt;
+      btn.dataset.opt=j;
+
+      btn.style.textAlign='left';
+      btn.style.padding='0.85rem';
+      btn.style.borderRadius='10px';
+      btn.style.border='1px solid rgba(148,163,184,0.9)';
+      btn.style.background='#ffffff';
+      btn.style.color='#071428';
+      btn.style.cursor='pointer';
+      btn.style.fontWeight=700;
+      btn.style.fontSize='0.98rem';
+      btn.style.boxShadow='0 6px 18px rgba(3,18,40,0.08)';
+      btn.style.transition='transform .12s ease, box-shadow .12s ease';
+
+      btn.addEventListener('mouseenter',()=>{
+        btn.style.transform='translateY(-2px)';
+        btn.style.boxShadow='0 10px 24px rgba(3,18,40,0.16)';
+      });
+      btn.addEventListener('mouseleave',()=>{
+        btn.style.transform='none';
+        btn.style.boxShadow='0 6px 18px rgba(3,18,40,0.08)';
+      });
+
+      btn.addEventListener('click',()=>onChoose(i,j));
+
+      if(answered[i]!==undefined){
+        btn.disabled=true;
+        if(j===answered[i].chosen) btn.style.outline='3px solid rgba(59,130,246,0.6)';
+        if(j===Q.a){
+          btn.style.background='#dcfce7';
+          btn.style.borderColor='#22c55e';
+          btn.style.color='#064e3b';
+        }
+      }
+
+      list.appendChild(btn);
+    });
+
+    qBox.appendChild(list);
+    wrap.appendChild(qBox);
+    feedback.textContent='';
+  }
+
+  function onChoose(i,chosen){
+    const Q=questions[i];
+    const opts=wrap.querySelectorAll('.quiz-opt');
+    opts.forEach(o=>o.disabled=true);
+
+    const correct=(chosen===Q.a);
+    if(correct){
+      points+=10;streak+=1;
+      feedback.style.color='#166534';
+      feedback.textContent='Correct! +10 points 🎉';
+    }else{
+      points=Math.max(0,points-5);streak=0;
+      feedback.style.color='#7c2d12';
+      feedback.textContent='Wrong! -5 points 😬';
+    }
+
+    opts.forEach(o=>{
+      const j=parseInt(o.dataset.opt,10);
+      if(j===Q.a){
+        o.style.background='#dcfce7';
+        o.style.borderColor='#22c55e';
+      }else{
+        o.style.opacity='0.85';
+      }
+      if(j===chosen && !correct){
+        o.style.background='#fee2e2';
+        o.style.borderColor='#ef4444';
+        o.style.outline='2px solid rgba(239,68,68,0.2)';
+      }
+    });
+
+    answered[i]={chosen,correct,time:Date.now()};
+    saveState();
+    renderScore();
+    showExplanation(Q);
+  }
+
+  function showExplanation(Q){
+    explainTitle.textContent='Why:';
+    explainBody.textContent=Q.explain||'Short explanation not available.';
+    explainModal.style.display='flex';
+    explainNext.focus();
+  }
+
+  explainClose.addEventListener('click',()=>explainModal.style.display='none');
+  explainNext.addEventListener('click',()=>{explainModal.style.display='none';nextBtn.click();});
+
+  prevBtn.addEventListener('click',()=>{
+    idx=(idx>0)?idx-1:0;
+    localStorage.setItem(STORAGE_INDEX,idx);
+    renderQuestion(idx);
+  });
+  nextBtn.addEventListener('click',()=>{
+    idx=(idx<questions.length-1)?idx+1:questions.length-1;
+    localStorage.setItem(STORAGE_INDEX,idx);
+    renderQuestion(idx);
+  });
+
+  restartBtn.addEventListener('click',()=>{
+    points=0;streak=0;idx=0;answered={};
+    quizStartTime=Date.now();
+    localStorage.removeItem(STORAGE_POINTS);
+    localStorage.removeItem(STORAGE_STREAK);
+    localStorage.removeItem(STORAGE_INDEX);
+    localStorage.removeItem(STORAGE_ANSW);
+    renderScore();
+    renderQuestion(idx);
+    summaryEl.style.display='none';
+  });
+
+  submitBtn.addEventListener('click',()=>{
+    const total=questions.length;
+    let correctCount=0;let attempted=0;
+    for(let i=0;i<total;i++){
+      if(answered[i]){
+        attempted++;
+        if(answered[i].correct) correctCount++;
+      }
+    }
+    const wrongCount=total-correctCount;
+    const percent=total?Math.round((correctCount/total)*100):0;
+
+    const elapsedMs=Date.now()-quizStartTime;
+    const seconds=Math.floor(elapsedMs/1000);
+    const mins=Math.floor(seconds/60);
+    const remSec=seconds%60;
+    const timeStr=(mins>0?mins+" min ":"")+remSec+" sec";
+
+    let msg='';
+    if(percent<50){
+      msg="You’ve started learning the basics—review the questions and try again.";
+    }else{
+      msg="🎉 Strong climate awareness! Use it to protect glaciers, water, and people.";
+    }
+
+    summaryEl.innerHTML =
+      "<strong>Quiz Summary</strong><br>" +
+      "Correct answers: <strong>"+correctCount+"</strong> / "+total+"<br>" +
+      "Wrong answers: <strong>"+wrongCount+"</strong><br>" +
+      "Score: <strong>"+percent+"%</strong><br>" +
+      "Time taken: <strong>"+timeStr+"</strong><br><br>" +
+      msg;
+    summaryEl.style.display='block';
+  });
+
+  function renderLeaderboard(){
+    const raw=localStorage.getItem(STORAGE_LEADER);
+    let list=raw?JSON.parse(raw):[];
+    list.sort((a,b)=>b.score-a.score);
+    list=list.slice(0,3);
+    lbList.innerHTML='';
+    if(list.length===0){
+      lbList.innerHTML='<li style="color:#666">No scores yet — be the first!</li>';
+    }else{
+      list.forEach(item=>{
+        const li=document.createElement('li');
+        li.textContent=item.name+' — '+item.score+' pts';
+        lbList.appendChild(li);
+      });
+    }
+  }
+
+  function openLeaderboard(){
+    renderLeaderboard();
+    lbModal.style.display='flex';
+    lbNameInput.focus();
+  }
+
+  openLbBtn.addEventListener('click',openLeaderboard);
+  lbClose.addEventListener('click',()=>lbModal.style.display='none');
+
+  lbSaveBtn.addEventListener('click',()=>{
+    const name=lbNameInput.value.trim()||'Anonymous';
+    const raw=localStorage.getItem(STORAGE_LEADER);
+    let list=raw?JSON.parse(raw):[];
+    list.push({name,score:points,date:Date.now()});
+    list.sort((a,b)=>b.score-a.score);
+    list=list.slice(0,10);
+    localStorage.setItem(STORAGE_LEADER,JSON.stringify(list));
+    renderLeaderboard();
+    lbNameInput.value='';
+  });
+
+  replaceIconsBtn.addEventListener('click',()=>{
+    const anyImgs=document.querySelectorAll('.nav-card img');
+    if(anyImgs.length===0){
+      feedback.style.color='#b45309';
+      feedback.textContent='No nav images found to replace.';
+      setTimeout(()=>feedback.textContent='',2000);
+      return;
+    }
+    anyImgs.forEach(img=>{
+      const parent=img.parentElement;
+      if(!parent) return;
+      const i=document.createElement('i');
+      i.className='fas fa-globe-europe';
+      i.style.fontSize='38px';
+      i.style.color='#bfdbfe';
+      i.style.padding='8px';
+      i.style.borderRadius='8px';
+      i.style.background='linear-gradient(180deg,rgba(255,255,255,0.08),rgba(0,0,0,0.18))';
+      i.style.boxShadow='0 10px 30px rgba(3,18,40,0.45)';
+      img.remove();
+      parent.insertBefore(i,parent.firstChild);
+    });
+    feedback.style.color='#b45309';
+    feedback.textContent='Nav images replaced with climate icons.';
+    setTimeout(()=>feedback.textContent='',2000);
+  });
+
+  document.addEventListener('keydown',(e)=>{
+    if(e.key==='n' || e.key==='N') nextBtn.click();
+    if(e.key==='p' || e.key==='P') prevBtn.click();
+    if(e.key==='r' || e.key==='R') restartBtn.click();
+    if(e.key==='l' || e.key==='L') openLbBtn.click();
+  });
+
+  renderScore();
+  renderQuestion(idx);
+
+  window.addEventListener('click',(ev)=>{
+    if(ev.target===lbModal) lbModal.style.display='none';
+    if(ev.target===explainModal) explainModal.style.display='none';
+  });
+  window.addEventListener('keydown',(ev)=>{
+    if(ev.key==='Escape'){
+      lbModal.style.display='none';
+      explainModal.style.display='none';
+    }
+  });
+
+  /* ========== MISSING BEHAVIOR: SMOOTH SCROLL + QUICK-NAV HIGHLIGHT ========== */
+  (function () {
+    function smoothScrollTo(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+
+    const openQuickNav = document.getElementById('open-quick-nav');
+    if(openQuickNav){
+      openQuickNav.addEventListener('click', ()=>{
+        const strip = document.getElementById('quick-nav');
+        if(strip){
+          const top = strip.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({top, behavior:'smooth'});
+        }
+      });
+    }
+
+    const quickButtons = Array.from(document.querySelectorAll('.quick-nav-item'));
+    quickButtons.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const target = btn.getAttribute('data-target');
+        if(target) smoothScrollTo(target);
+      });
+    });
+
+    const sectionIds = ['basics-card','causes-card','glacier-card','solutions-card','actions-card','extra-actions-card','video-section','gallery-section','feedback-section','quiz-section'];
+    const sectionMap = {};
+    sectionIds.forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) sectionMap[id] = el;
+    });
+    function onScrollHighlight(){
+      const scrollPos = window.scrollY + 120;
+      let currentId = null;
+      for(const id in sectionMap){
+        const rectTop = sectionMap[id].offsetTop;
+        if(scrollPos >= rectTop) currentId = id;
+      }
+      if(!currentId) return;
+      quickButtons.forEach(btn=>{
+        const t = btn.getAttribute('data-target');
+        if(t === currentId) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+    window.addEventListener('scroll', onScrollHighlight, { passive: true });
+    onScrollHighlight();
+
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==='n' || e.key==='N') {
+        const n = document.getElementById('quiz-next');
+        if(n) n.click();
+      }
+      if(e.key==='p' || e.key==='P') {
+        const p = document.getElementById('quiz-prev');
+        if(p) p.click();
+      }
+      if(e.key==='r' || e.key==='R') {
+        const r = document.getElementById('quiz-restart');
+        if(r) r.click();
+      }
+      if(e.key==='l' || e.key==='L') {
+        const l = document.getElementById('open-leaderboard');
+        if(l) l.click();
+      }
+    });
+
+    console.info('Smooth scroll + quick-nav highlight activated.');
+  })();
+
+})();
+</script>
+</body>
+</html>
+

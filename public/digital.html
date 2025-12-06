@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Digital Addiction - Global Awareness Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="style.css">
+<style>
+  * {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+    font-size: clamp(14px, 1.05vw, 15px);
+    background:
+      linear-gradient(135deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+      url('./dig.jpg'); /* updated to your attached background */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #0d1b2a;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 18px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, rgba(30,64,175,0.96), rgba(147,51,234,0.96));
+    color: #ffffff;
+    text-align: center;
+    padding: clamp(2.6rem, 6vw, 3.5rem) clamp(1.4rem, 5vw, 2.4rem);
+    border-radius: 24px;
+    margin-bottom: 2.8rem;
+    box-shadow: 0 22px 70px rgba(0,0,0,0.7);
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.55);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    animation: heroShimmer 4s infinite;
+  }
+  .hero h1 {
+    font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto 1.6rem;
+    opacity: 0.95;
+  }
+
+  .intro-text {
+    max-width: 820px;
+    margin: 0 auto 2.4rem;
+    font-size: 0.98rem;
+    font-weight: 400;
+    color: #e0f2fe;
+    background: rgba(15,23,42,0.9);
+    border-radius: 18px;
+    padding: 1rem 1.4rem;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.55);
+    line-height: 1.5;
+  }
+
+  /* Hero Stats */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.2rem;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .stat-hero {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #e0f2fe;
+    box-shadow: 0 0 14px rgba(0,0,0,0.6);
+  }
+  .stat-hero-number {
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+  .stat-hero-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 600;
+    margin-top: 0.3rem;
+  }
+
+  /* SINGLE HERO NAV CARD */
+  .nav-grid {
+    display:flex;
+    justify-content:center;
+    margin: 2.4rem auto 0.6rem;
+    max-width: 900px;
+  }
+  .nav-card {
+    background: radial-gradient(circle at top left, rgba(59,130,246,0.45), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(147,51,234,0.45), transparent 55%),
+                rgba(24,24,27,0.96);
+    backdrop-filter: blur(22px);
+    border: 1px solid rgba(129,140,248,0.7);
+    color: #f9fbff;
+    padding: 1.4rem 1.8rem;
+    border-radius: 999px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 18px 55px rgba(0,0,0,0.65);
+    display:flex;
+    align-items:center;
+    gap:0.8rem;
+  }
+  .nav-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 26px 80px rgba(0,0,0,0.85);
+  }
+  .nav-icon {
+    font-size: 2rem;
+    color:#bfdbfe;
+  }
+  .nav-title {
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing:0.02em;
+  }
+  .nav-hint {
+    text-align:center;
+    font-size:0.9rem;
+    color:#e2e8f0;
+    margin-bottom:1.4rem;
+    opacity:0.9;
+  }
+
+  /* QUICK NAV STRIP */
+  .quick-nav {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:1rem;
+    margin:0 auto 2.6rem;
+    max-width:1000px;
+  }
+  .quick-nav-item {
+    min-width:130px;
+    padding:0.85rem 1.1rem;
+    border-radius:16px;
+    border:1px solid rgba(59,130,246,0.35);
+    background:linear-gradient(145deg,#eef2ff,#fae8ff);
+    box-shadow:0 10px 28px rgba(24,24,27,0.35);
+    cursor:pointer;
+    text-align:center;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.35rem;
+  }
+  .quick-nav-item i{
+    font-size:1.35rem;
+    color:#1d4ed8;
+  }
+  .quick-nav-item span{
+    font-size:0.9rem;
+    font-weight:650;
+    color:#021526;
+  }
+  .quick-nav-item:hover{
+    transform:translateY(-3px);
+    background:#e0e7ff;
+    box-shadow:0 18px 40px rgba(24,24,27,0.45);
+  }
+  .quick-nav-item.active{
+    background:linear-gradient(145deg,#1d4ed8,#9333ea);
+    color:#fdf2ff;
+    border-color:rgba(129,140,248,0.9);
+  }
+  .quick-nav-item.active i{
+    color:#e0e7ff;
+  }
+  .quick-nav-item.active span{
+    color:#fdf4ff;
+  }
+
+  /* Main Content Cards */
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3.2rem;
+  }
+  .content-card {
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    padding: 1.9rem 1.7rem;
+    box-shadow:
+      0 20px 65px rgba(0,0,0,0.5),
+      0 6px 18px rgba(0,0,0,0.28);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.55);
+    position: relative;
+    overflow: hidden;
+  }
+  .content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #ec4899, #6366f1, #ec4899);
+    animation: cardShimmer 4s infinite;
+  }
+  .content-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow:
+      0 28px 80px rgba(0,0,0,0.6),
+      0 14px 30px rgba(0,0,0,0.38);
+  }
+  .card-title {
+    color: #0c2238;
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .card-list {
+    list-style: none;
+    padding: 0;
+  }
+  .card-list li {
+    background: linear-gradient(135deg, #eef2ff, #fae8ff);
+    margin: 0.9rem 0;
+    padding: 1.1rem 1.3rem;
+    border-radius: 14px;
+    border-left: 4px solid #6366f1;
+    transition: all 0.25s ease;
+    color: #0d1b2a;
+    font-weight: 550;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.16);
+    position: relative;
+    cursor: pointer;
+  }
+  .card-list li::before {
+    content: '📱';
+    margin-right: 0.7rem;
+    font-size: 1.2rem;
+  }
+  .card-list li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.32);
+    background: linear-gradient(135deg, #e0f2fe, #fce7f3);
+    border-left-color: #1d4ed8;
+  }
+
+  /* Video Section */
+  .video-section {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(30px);
+    padding: 2.2rem 2rem;
+    border-radius: 22px;
+    margin: 3rem 0;
+    box-shadow: 0 26px 90px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.7);
+  }
+  .video-title {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 0.9rem;
+    color: #0c2238;
+  }
+  .video-desc {
+    text-align: center;
+    font-size: 0.98rem;
+    max-width: 780px;
+    margin: 0 auto 1.8rem;
+    color: #334155;
+    font-weight: 500;
+  }
+  .video-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.65);
+    border: 1px solid rgba(129,140,248,0.4);
+    background: #000;
+  }
+  .video-wrapper video {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Gallery */
+  .gallery-section {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(32px);
+    padding: 3.2rem 2.4rem;
+    border-radius: 24px;
+    margin: 3.5rem 0;
+    box-shadow: 0 30px 100px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.7);
+  }
+  .gallery-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    color: #0c2238;
+    margin-bottom: 2.4rem;
+    font-weight: 800;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.8rem;
+  }
+  .gallery-item {
+    display:flex;
+    flex-direction:column;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid rgba(255,255,255,0.85);
+    background:#ffffff;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+  }
+  .gallery-caption {
+    padding:0.65rem 0.8rem;
+    font-size:0.9rem;
+    font-weight:600;
+    color:#0c2238;
+    text-align:center;
+  }
+  .gallery-item:hover {
+    transform: scale(1.04) translateY(-8px);
+    box-shadow: 0 46px 140px rgba(0,0,0,0.78);
+    border-color: rgba(129,140,248,0.9);
+  }
+
+  /* Impact Section */
+  .impact-section {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(32px);
+    padding: 3rem 2.3rem;
+    border-radius: 24px;
+    margin: 3.8rem 0;
+    text-align: center;
+    box-shadow: 0 30px 100px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.7);
+    position: relative;
+    overflow: hidden;
+  }
+  .impact-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(129,140,248,0.2) 0%, transparent 70%);
+    animation: float 20s infinite linear;
+  }
+  .impact-title {
+    color: #0c2238;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+  .impact-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2rem;
+    margin: 2.2rem auto;
+    max-width: 1000px;
+  }
+  .impact-stat {
+    background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(224,231,255,0.95));
+    padding: 1.8rem 1.6rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.75);
+    transition: all 0.3s ease;
+  }
+  .impact-stat:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  }
+  .impact-number {
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.6rem;
+  }
+  .impact-label {
+    font-size: 0.98rem;
+    color: #1e293b;
+    font-weight: 700;
+  }
+
+  /* Feedback Section */
+  .feedback-section {
+    background: radial-gradient(circle at top left, rgba(191,219,254,0.35), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(221,214,254,0.35), transparent 55%),
+                rgba(255,255,255,0.97);
+    backdrop-filter: blur(34px);
+    padding: 2.8rem 2.3rem;
+    border-radius: 26px;
+    margin: 3.5rem 0;
+    box-shadow: 0 32px 110px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.8);
+    position: relative;
+    overflow: hidden;
+  }
+  .feedback-section::before {
+    content:"";
+    position:absolute;
+    inset:-40%;
+    background:radial-gradient(circle,rgba(255,255,255,0.18) 0,transparent 70%);
+    opacity:0.3;
+    pointer-events:none;
+  }
+  .feedback-title {
+    position:relative;
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    font-weight: 800;
+    text-align: center;
+    color:#1e293b;
+    margin-bottom:0.4rem;
+  }
+  .feedback-subtitle {
+    position:relative;
+    text-align:center;
+    max-width:720px;
+    margin:0 auto 2rem;
+    font-size:0.98rem;
+    color:#4b5563;
+  }
+  .feedback-layout {
+    position:relative;
+    display:grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+    gap:1.8rem;
+    align-items:flex-start;
+  }
+  .feedback-form {
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+    background:rgba(255,255,255,0.96);
+    border-radius:18px;
+    padding:1.4rem 1.5rem;
+    box-shadow:0 20px 60px rgba(0,0,0,0.18);
+    border:1px solid rgba(129,140,248,0.4);
+  }
+  .feedback-row {
+    display:flex;
+    gap:0.9rem;
+    flex-wrap:wrap;
+  }
+  .feedback-form input,
+  .feedback-form select,
+  .feedback-form textarea {
+    width:100%;
+    padding:0.75rem 0.9rem;
+    border-radius:10px;
+    border:1px solid rgba(129,140,248,0.6);
+    font-size:0.96rem;
+    font-family:inherit;
+    background:#eef2ff;
+    transition:border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .feedback-form input:focus,
+  .feedback-form select:focus,
+  .feedback-form textarea:focus {
+    outline:none;
+    border-color:#6366f1;
+    box-shadow:0 0 0 2px rgba(129,140,248,0.35);
+    background:#ffffff;
+  }
+  .feedback-form textarea{
+    min-height:120px;
+    resize:vertical;
+  }
+  .feedback-actions{
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    flex-wrap:wrap;
+  }
+  .feedback-form button {
+    padding:0.8rem 1.9rem;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    background:linear-gradient(135deg,#6366f1,#ec4899);
+    color:#fdf2ff;
+    font-weight:750;
+    font-size:0.98rem;
+    box-shadow:0 18px 55px rgba(0,0,0,0.45);
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .feedback-form button:hover {
+    transform:translateY(-2px);
+    box-shadow:0 24px 70px rgba(0,0,0,0.6);
+  }
+  .feedback-info {
+    font-size:0.9rem;
+    color:#166534;
+    display:none;
+  }
+  .feedback-side{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+  .feedback-stat-card{
+    background:rgba(24,24,27,0.96);
+    color:#f9fafb;
+    border-radius:16px;
+    padding:1.1rem 1.2rem;
+    box-shadow:0 18px 55px rgba(0,0,0,0.6);
+  }
+  .feedback-stat-card h3{
+    margin:0 0 0.6rem 0;
+    font-size:1rem;
+    letter-spacing:0.01em;
+  }
+  .feedback-stat-card ul{
+    margin:0;
+    padding-left:1.1rem;
+    font-size:0.9rem;
+  }
+  .feedback-stat-card li{
+    margin-bottom:0.35rem;
+  }
+  .feedback-highlight{
+    background:linear-gradient(135deg,#fef9c3,#e0f2fe);
+    border-radius:14px;
+    padding:0.85rem 1rem;
+    border:1px dashed rgba(59,130,246,0.6);
+    font-size:0.9rem;
+    color:#111827;
+  }
+  .highlight-label{
+    display:inline-block;
+    font-weight:700;
+    margin-bottom:0.3rem;
+  }
+
+  /* Quiz section container */
+  #quiz-section {
+    max-width:1100px;
+    margin:2.5rem auto 3.5rem auto;
+    padding:1.8rem;
+    border-radius:12px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.96),rgba(224,231,255,0.96));
+    border:1px solid rgba(129,140,248,0.25);
+    box-shadow:0 20px 60px rgba(3,18,40,0.06);
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 900px) {
+    .content-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .container { padding: 14px; }
+    .hero { padding: 2.2rem 1.4rem; }
+    .content-card,
+    .video-section,
+    .gallery-section,
+    .impact-section,
+    .feedback-section { padding: 1.8rem 1.5rem; }
+    .video-wrapper video { height: 220px; }
+    .gallery-item img { height: 190px; }
+  }
+
+  @keyframes heroShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+  @keyframes cardShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  @keyframes float {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Digital Addiction Introduction">
+      <h1>📱 Digital Addiction</h1>
+      <p class="hero-subtitle">Balanced screen use protects sleep, focus, and real-life relationships. Learn how to spot and reduce unhealthy digital habits.</p>
+      <p class="intro-text">
+        Digital addiction is when someone cannot control how much they use phones, games, or social media, even when it starts harming their studies, health, or relationships. This page explains signs, causes, and simple steps to build a healthier online-offline balance.
+      </p>
+      <div class="hero-stats" role="list" aria-label="Digital addiction statistics">
+        <div class="stat-hero" role="listitem">
+          <span class="stat-hero-number">7+ hrs</span>
+          <span class="stat-hero-label">Average daily screen time for many students.</span>
+        </div>
+        <div class="stat-hero" role="listitem">
+          <span class="stat-hero-number">1 in 5</span>
+          <span class="stat-hero-label">Young people may show signs of problematic use.</span>
+        </div>
+        <div class="stat-hero" role="listitem">
+          <span class="stat-hero-number">24/7</span>
+          <span class="stat-hero-label">Notifications keep the brain “always on” unless we set boundaries.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SINGLE NAV CARD -->
+    <nav class="nav-grid" aria-label="Quick navigation to sections">
+      <div class="nav-card" id="open-quick-nav">
+        <i class="fas fa-compass nav-icon" aria-hidden="true"></i>
+        <div class="nav-title">Explore Digital Addiction Sections</div>
+      </div>
+    </nav>
+    <p class="nav-hint">Scroll or click a card below to jump directly to signs, causes, solutions, media, feedback, and quiz.</p>
+
+    <!-- QUICK NAV ICON STRIP -->
+    <div id="quick-nav" class="quick-nav" aria-label="Section shortcuts">
+      <button class="quick-nav-item" data-target="root-causes">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>Key Signs</span>
+      </button>
+      <button class="quick-nav-item" data-target="solutions">
+        <i class="fas fa-brain"></i>
+        <span>Why It Happens</span>
+      </button>
+      <button class="quick-nav-item" data-target="help">
+        <i class="fas fa-hand-holding-heart"></i>
+        <span>Healthy Habits</span>
+      </button>
+      <button class="quick-nav-item" data-target="video-section">
+        <i class="fas fa-video"></i>
+        <span>Awareness Media</span>
+      </button>
+      <button class="quick-nav-item" data-target="gallery-section">
+        <i class="fas fa-images"></i>
+        <span>Awareness Gallery</span>
+      </button>
+      <button class="quick-nav-item" data-target="feedback-section">
+        <i class="fas fa-comment-dots"></i>
+        <span>Feedback</span>
+      </button>
+      <button class="quick-nav-item" data-target="quiz-section">
+        <i class="fas fa-question-circle"></i>
+        <span>Quiz</span>
+      </button>
+    </div>
+
+    <!-- Main Content -->
+    <section class="content-grid" aria-label="Digital addiction detailed information">
+      <!-- Root Causes / Key Challenges -->
+      <article class="content-card" id="root-causes" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-exclamation-circle"></i> Key Signs</h3>
+        <ul class="card-list" aria-label="Main signs of digital addiction">
+          <li>Spending more and more time on screens and struggling to stop.</li>
+          <li>Checking the phone constantly, even during class, meals, or conversations.</li>
+          <li>Sleep, marks, or work suffering because of late-night scrolling or gaming.</li>
+          <li>Feeling nervous, angry, or empty when not connected to the internet.</li>
+          <li>Ignoring hobbies, sports, or friends to stay online.</li>
+        </ul>
+      </article>
+
+      <!-- Proven Solutions / Empowerment Steps -->
+      <article class="content-card" id="solutions" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-brain"></i> Why It Happens</h3>
+        <ul class="card-list" aria-label="Reasons digital addiction develops">
+          <li>Apps, games, and social media use likes, streaks, and rewards to keep you hooked.</li>
+          <li>Online spaces become an easy escape from stress, boredom, or loneliness.</li>
+          <li>Notifications and endless feeds train the brain to expect instant updates.</li>
+          <li>Fear of missing out (FOMO) makes it hard to switch off.</li>
+          <li>Study and entertainment on the same device blur boundaries between work and play.</li>
+        </ul>
+      </article>
+
+      <!-- How You Can Help -->
+      <article class="content-card" id="help" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-hand-holding-heart"></i> Healthy Screen Habits</h3>
+        <ul class="card-list" aria-label="Ways to build healthier digital habits">
+          <li>Fix phone-free times like during meals, family time, and 1 hour before sleep.</li>
+          <li>Use app timers or digital wellbeing tools to limit daily screen time.</li>
+          <li>Keep devices out of reach while studying; use focus or do-not-disturb modes.</li>
+          <li>Replace late-night scrolling with reading, journaling, or calming music.</li>
+          <li>Talk to someone you trust if you feel screens are controlling your day.</li>
+        </ul>
+      </article>
+
+      <!-- Global Impact / Success Stories -->
+      <article class="content-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-chart-bar"></i> Impact on Life</h3>
+        <ul class="card-list" aria-label="Effects of digital addiction on life">
+          <li>Lower focus and memory, making it harder to follow classes or complete work.</li>
+          <li>Disturbed sleep leading to tiredness, headaches, and irritability.</li>
+          <li>More comparison on social media, which can hurt confidence and mood.</li>
+          <li>Conflicts at home when screen time replaces family time and responsibilities.</li>
+          <li>Less movement and outdoor time affecting physical health.</li>
+        </ul>
+      </article>
+
+      <!-- Daily Habits -->
+      <article class="content-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-heart"></i> Everyday Balance Habits</h3>
+        <ul class="card-list" aria-label="Everyday habits for digital balance">
+          <li>Start and end the day without your phone for at least 15–30 minutes.</li>
+          <li>Keep only useful apps on the home screen and remove time-wasting ones.</li>
+          <li>Set “scroll limits” for each app and stick to them.</li>
+          <li>Plan at least one phone-free activity daily—walk, game, art, or talk.</li>
+          <li>Use tech as a tool to learn or create, not only to escape or compare.</li>
+        </ul>
+      </article>
+
+      <!-- Technology & Innovation -->
+      <article class="content-card" tabindex="0">
+        <h3 class="card-title"><i class="fas fa-microchip"></i> Tech Tools That Help</h3>
+        <ul class="card-list" aria-label="Technologies helping digital balance">
+          <li>Screen-time and focus apps that block distracting websites while you study.</li>
+          <li>Blue-light filters and dark mode to reduce eye strain at night.</li>
+          <li>Mindfulness and breathing apps to manage stress without endless scrolling.</li>
+          <li>Parental and self-controls to set limits on gaming or social media.</li>
+          <li>Online counseling and helplines for support with digital addiction.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Awareness Video Section -->
+    <section class="video-section" id="video-section" aria-label="Digital addiction awareness video">
+      <h2 class="video-title">🎬 Awareness Video</h2>
+      <p class="video-desc">
+        Watch this short awareness video to understand how digital addiction begins and how small daily choices can restore balance between online and offline life.
+      </p>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="digital_addiction.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- Awareness Gallery -->
+    <section class="gallery-section" id="gallery-section" aria-label="Digital addiction awareness gallery">
+      <h2 class="gallery-title">📸 Digital Balance Gallery</h2>
+      <div class="gallery-grid">
+        <figure class="gallery-item" tabindex="0">
+          <img src="cell.jpg" alt="Students holding posters about healthy screen use" />
+          <figcaption class="gallery-caption">Campus campaign on phone-free zones</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="late.jpg" alt="Student tired at night with phone in hand" />
+          <figcaption class="gallery-caption">Late-night scrolling and lost sleep</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="classroom.jpg" alt="Teacher leading a session about digital wellbeing" />
+          <figcaption class="gallery-caption">Classroom talk on digital wellbeing</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="enjoy.jpg" alt="Friends spending time together without phones" />
+          <figcaption class="gallery-caption">Friends enjoying an offline evening</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="walk.jpg" alt="Students walking with phones in pockets" />
+          <figcaption class="gallery-caption">Walk-and-talk instead of scroll-and-scroll</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="screen.jpg.webp" alt="Poster with tips to cut screen time" />
+          <figcaption class="gallery-caption">Simple tips for screen balance</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="event.jpg" alt="School event on social media addiction" />
+          <figcaption class="gallery-caption">School event on social media use</figcaption>
+        </figure>
+
+        <figure class="gallery-item" tabindex="0">
+          <img src="study.webp" alt="Student turning on focus mode on a phone" />
+          <figcaption class="gallery-caption">Using focus mode for study time</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Real World Success Stories -->
+    <section class="impact-section" aria-label="Real world digital balance success stories">
+      <h2 class="impact-title">Real Stories of Digital Balance</h2>
+      <p style="font-size: 0.98rem; color: #1e293b; max-width: 780px; margin: 0 auto 2.2rem; font-weight: 500;">
+        Schools and families that set clear rules, offer offline activities, and talk openly about screen use see better sleep, stronger focus, and healthier relationships with technology.
+      </p>
+      <div class="impact-stats">
+        <div class="impact-stat">
+          <span class="impact-number">50%</span>
+          <div class="impact-label">Less screen time when phones are kept outside bedrooms.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">2×</span>
+          <div class="impact-label">Better concentration when social apps are muted during study.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">30%</span>
+          <div class="impact-label">Improved sleep after reducing late-night screen use.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">1 hr</span>
+          <div class="impact-label">Daily phone-free time boosts mood and real-life connection.</div>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-number">Balance</span>
+          <div class="impact-label">The goal is smart use, not zero technology.</div>
+        </div>
+      </div>
+    </section>
+
+<!-- QUIZ SECTION -->
+<section id="quiz-section" aria-label="Digital Addiction Quiz">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:1rem;">
+    <h2 style="font-size:1.35rem;margin:0;color:#071428">Test Your Knowledge — Digital Balance Quiz</h2>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <div id="quiz-points" style="background:#111827;color:#f9fafb;padding:.5rem .8rem;border-radius:10px;font-weight:700">Points: 0</div>
+      <div id="quiz-streak" style="background:#4b5563;color:#e5e7eb;padding:.5rem .8rem;border-radius:10px;font-weight:700">Streak: 0</div>
+      <button id="replace-nav-icons" title="Replace nav photos with icons" style="background:transparent;border:1px solid rgba(129,140,248,0.3);padding:.4rem .6rem;border-radius:8px;cursor:pointer">Use Icons</button>
+      <button id="open-leaderboard" title="Open leaderboard" style="background:transparent;border:1px solid rgba(129,140,248,0.3);padding:.4rem .6rem;border-radius:8px;cursor:pointer">Leaderboard</button>
+    </div>
+  </div>
+
+  <div id="quiz-inner" style="min-height:160px;">
+    <!-- JS will render question here -->
+  </div>
+
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem;align-items:center;">
+    <button id="quiz-prev" style="background:#e0e7ff;color:#111827;padding:.6rem 1rem;border-radius:10px;border:none;cursor:pointer">Previous</button>
+    <button id="quiz-next" style="background:linear-gradient(90deg,#6366f1,#ec4899);color:#fdf2ff;padding:.6rem 1rem;border-radius:10px;border:none;cursor:pointer;font-weight:700">Next</button>
+    <button id="quiz-submit" style="background:#16a34a;color:#fff;padding:.6rem 1rem;border-radius:10px;border:none;cursor:pointer;margin-left:8px;font-weight:700">Submit Quiz</button>
+    <button id="quiz-restart" style="margin-left:auto;background:transparent;border:1px solid rgba(129,140,248,0.45);padding:.5rem .9rem;border-radius:10px;cursor:pointer;font-weight:600">Restart Quiz</button>
+  </div>
+
+  <div id="quiz-feedback" aria-live="polite" style="margin-top:1rem;font-weight:700;color:#7c2d12"></div>
+
+  <div id="quiz-summary" style="margin-top:1.2rem;padding:0.9rem 1rem;border-radius:10px;background:#fef9c3;color:#1f2937;display:none;">
+    <!-- filled after submit -->
+  </div>
+</section>
+
+<!-- Leaderboard modal -->
+<div id="leaderboard-modal" role="dialog" aria-modal="true" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:9999;">
+  <div style="width:calc(100% - 60px);max-width:520px;background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(129,140,248,0.2);box-shadow:0 30px 90px rgba(3,18,40,0.2);margin:auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <h3 style="margin:0;color:#071428">Leaderboard — Top Scores</h3>
+      <button id="lb-close" style="background:transparent;border:none;font-weight:700;cursor:pointer">✕</button>
+    </div>
+    <ol id="leaderboard-list" style="margin-top:12px;padding-left:18px;color:#071428;font-weight:700"></ol>
+    <div style="display:flex;gap:8px;margin-top:12px;align-items:center;">
+      <input id="lb-name" placeholder="Your name" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(129,140,248,0.25)" />
+      <button id="lb-save" style="background:linear-gradient(90deg,#6366f1,#ec4899);border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700;color:#fdf2ff">Save</button>
+    </div>
+    <div style="margin-top:10px;text-align:right;color:#666;font-size:0.9rem">Top 3 scores stored locally.</div>
+  </div>
+</div>
+
+<!-- Explanation modal -->
+<div id="explain-modal" role="dialog" aria-modal="true" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:10000;">
+  <div style="width:calc(100% - 60px);max-width:640px;background:#0b1a27;color:#e8f6ff;border-radius:12px;padding:18px;border:1px solid rgba(129,140,248,0.2);box-shadow:0 30px 90px rgba(0,0,0,0.6);margin:auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <h3 id="explain-title" style="margin:0">Answer explanation</h3>
+      <button id="explain-close" style="background:transparent;border:none;color:#e8f6ff;font-weight:700;cursor:pointer">✕</button>
+    </div>
+    <div id="explain-body" style="margin-top:12px;font-size:1rem;line-height:1.5;color:#d7f1ff"></div>
+    <div style="text-align:right;margin-top:12px;">
+      <button id="explain-next" style="background:#6366f1;border:none;color:#e5e7eb;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700">Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEEDBACK SECTION -->
+<section class="feedback-section" id="feedback-section" aria-label="Share your digital addiction feedback">
+  <h2 class="feedback-title">💬 Share Your Thoughts</h2>
+  <p class="feedback-subtitle">
+    Tell how this digital addiction hub helped you or share ideas to help students and families use screens in a healthier way.
+  </p>
+
+  <div class="feedback-layout">
+    <form class="feedback-form" id="feedback-form">
+      <div class="feedback-row">
+        <input type="text" name="name" placeholder="Your name" aria-label="Your name">
+        <input type="email" name="email" placeholder="Email (optional)" aria-label="Your email">
+      </div>
+
+      <div class="feedback-row">
+        <select name="mood" aria-label="How do you feel about this page?">
+          <option value="">How was this page?</option>
+          <option value="excellent">🌟 Very helpful</option>
+          <option value="good">👍 Good reminder</option>
+          <option value="ok">🙂 Informative</option>
+          <option value="bad">😕 Needs improvement</option>
+        </select>
+      </div>
+
+      <textarea name="message" placeholder="Write your feedback, experiences with screen time, or ideas for healthier digital habits here..."></textarea>
+
+      <div class="feedback-actions">
+        <button type="submit" id="feedback-submit">
+          <i class="fas fa-paper-plane"></i>&nbsp;Send Feedback
+        </button>
+        <span id="feedback-info" class="feedback-info">Thank you for sharing honestly about digital balance!</span>
+      </div>
+    </form>
+
+    <div class="feedback-side">
+      <div class="feedback-stat-card">
+        <h3>Why your voice matters</h3>
+        <ul>
+          <li>Helps improve awareness content for students and communities.</li>
+          <li>Inspires new ideas for phone-free activities and digital wellbeing events.</li>
+          <li>Shows what topics about screens and mental health you want to learn next.</li>
+        </ul>
+      </div>
+      <div class="feedback-highlight">
+        <span class="highlight-label">Your choice = your time</span>
+        <p>Every time you decide to put your phone down and be present, you prove that technology is your tool—not your boss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </div>
+
+<!-- ===========================
+     ADDED FEATURES START HERE
+     (All appended — original code unchanged)
+     =========================== -->
+
+<!-- BACK-TO-TOP BUTTON -->
+<button id="backToTopBtn" aria-label="Back to top" title="Back to top" style="display:none;position:fixed;right:18px;bottom:18px;z-index:9998;padding:10px 12px;border-radius:10px;border:none;background:linear-gradient(135deg,#6366f1,#ec4899);color:#fff;box-shadow:0 12px 36px rgba(3,18,40,0.3);cursor:pointer;">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- DARK MODE TOGGLE -->
+<button id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode" style="position:fixed;right:18px;bottom:80px;z-index:9998;padding:10px 12px;border-radius:10px;border:none;background:rgba(255,255,255,0.9);color:#071428;box-shadow:0 12px 36px rgba(3,18,40,0.08);cursor:pointer;">
+  <i class="fas fa-moon"></i>
+</button>
+
+<!-- FOOTER (appended) -->
+<footer id="page-footer" style="margin-top:3rem;background:linear-gradient(180deg,rgba(10,12,20,0.95),rgba(6,8,15,0.95));color:#e6eef8;padding:28px;border-radius:12px;max-width:1300px;margin-left:auto;margin-right:auto;box-shadow:0 18px 60px rgba(0,0,0,0.5);">
+  <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+    <div style="max-width:720px;">
+      <h3 style="margin:0;font-size:1.15rem;">Global Awareness Hub — Digital Balance</h3>
+      <p style="margin:6px 0 0 0;color:#cfe9ff;font-size:0.95rem;">Created to help students, teachers and families build healthier relationships with technology.</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <a href="#" style="color:#cfe9ff;text-decoration:none;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06)">Privacy</a>
+      <a href="#" style="color:#cfe9ff;text-decoration:none;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06)">Contact</a>
+      <a href="#" style="color:#cfe9ff;text-decoration:none;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06)">About</a>
+    </div>
+  </div>
+  <div style="margin-top:14px;text-align:center;color:#9fbfe8;font-size:0.85rem;">© <span id="footer-year"></span> Global Awareness Hub — Built for learning & action.</div>
+</footer>
+
+<!-- ===========================
+     ADDED STYLES FOR NEW FEATURES
+     (kept separate so original styles remain untouched)
+     =========================== -->
+<style>
+  /* subtle reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+    transition: opacity 520ms cubic-bezier(.2,.9,.2,1), transform 520ms cubic-bezier(.2,.9,.2,1);
+    will-change: opacity, transform;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* quick floating nav small badge */
+  #open-quick-nav {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* dark mode overrides */
+  .dark-mode {
+    background: linear-gradient(135deg, rgba(2,6,23,0.9), rgba(6,8,15,0.9)), url('./digital.jpg');
+    color: #dbeafe !important;
+  }
+  .dark-mode .content-card,
+  .dark-mode .video-section,
+  .dark-mode .gallery-section,
+  .dark-mode .impact-section,
+  .dark-mode .feedback-section {
+    background: rgba(6,8,15,0.6) !important;
+    border: 1px solid rgba(255,255,255,0.04) !important;
+    color: #dbeafe !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  }
+  .dark-mode .card-list li {
+    background: linear-gradient(135deg, rgba(10,12,20,0.6), rgba(18,20,36,0.6));
+    color: #dbeafe;
+    border-left-color: #4f46e5;
+  }
+  .dark-mode .quick-nav-item {
+    background: linear-gradient(145deg, rgba(3,7,18,0.9), rgba(10,12,30,0.9));
+    border-color: rgba(99,102,241,0.2);
+    color: #e6eef8;
+  }
+
+  /* back to top visible state */
+  #backToTopBtn.show {
+    display: inline-block !important;
+    animation: popIn .28s ease;
+  }
+  @keyframes popIn {
+    0% { transform: translateY(8px) scale(.98); opacity:0; }
+    100% { transform: translateY(0) scale(1); opacity:1; }
+  }
+
+  /* small responsive adjustments for appended buttons */
+  @media (max-width: 600px) {
+    #darkModeToggle { right: 12px; bottom: 72px; padding:8px; }
+    #backToTopBtn { right: 12px; bottom: 12px; padding:8px; }
+  }
+</style>
+
+<!-- ===========================
+     ADDED SCRIPTS FOR NEW FEATURES
+     (appended so original scripts remain unchanged)
+     =========================== -->
+<script>
+  (function(){
+    /* FOOTER YEAR */
+    try{
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+    }catch(e){/* ignore if footer not present */ }
+
+    /* BACK TO TOP */
+    const backBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 420) backBtn.classList.add('show');
+      else backBtn.classList.remove('show');
+    });
+    backBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    /* DARK MODE TOGGLE - stores preference in localStorage */
+    const dmToggle = document.getElementById('darkModeToggle');
+    const DARK_KEY = 'gah_dark_mode_v1';
+    function applyDark(pref){
+      if(pref) document.documentElement.classList.add('dark-mode'), document.body.classList.add('dark-mode');
+      else document.documentElement.classList.remove('dark-mode'), document.body.classList.remove('dark-mode');
+      // swap icon
+      dmToggle.innerHTML = pref ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+    let darkPref = localStorage.getItem(DARK_KEY) === '1';
+    applyDark(darkPref);
+    dmToggle.addEventListener('click', ()=>{
+      darkPref = !darkPref;
+      localStorage.setItem(DARK_KEY, darkPref ? '1' : '0');
+      applyDark(darkPref);
+    });
+
+    /* SMOOTH SCROLL + ACTIVE HIGHLIGHT for quick-nav (compatible with existing buttons) */
+    function smoothScrollTo(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+    const quickButtons = document.querySelectorAll('.quick-nav-item');
+    quickButtons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const target = btn.dataset.target;
+        if(target) smoothScrollTo(target);
+      });
+    });
+
+    // Build section map for highlighting - prefer existing IDs
+    const sectionIds = Array.from(document.querySelectorAll('.content-card, .video-section, .gallery-section, .impact-section, .feedback-section, #quiz-section'))
+      .map(el => el.id)
+      .filter(Boolean);
+    const sectionMap = {};
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) sectionMap[id] = el;
+    });
+
+    function onScrollHighlight(){
+      const scrollPos = window.scrollY + 140;
+      let currentId = null;
+      for(const id in sectionMap){
+        const rectTop = sectionMap[id].offsetTop;
+        if(scrollPos >= rectTop) currentId = id;
+      }
+      if(!currentId) return;
+      quickButtons.forEach(btn=>{
+        const t = btn.getAttribute('data-target');
+        if(t === currentId) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+    window.addEventListener('scroll', onScrollHighlight);
+    onScrollHighlight();
+
+    /* OPEN QUICK NAV CARD behavior (if present) - scroll to quick-nav strip */
+    const openQuick = document.getElementById('open-quick-nav');
+    if(openQuick){
+      openQuick.addEventListener('click', ()=>{
+        const q = document.getElementById('quick-nav');
+        if(q) window.scrollTo({top: q.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth'});
+      });
+    }
+
+    /* REVEAL ON SCROLL using IntersectionObserver */
+    const revealTargets = document.querySelectorAll('.content-card, .video-section, .gallery-item, .impact-stat, .feedback-section, #quiz-section');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          entry.target.classList.add('reveal-visible-applied'); // marker
+          // once visible, unobserve to boost perf
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealTargets.forEach(t => {
+      t.classList.add('reveal');
+      io.observe(t);
+    });
+
+    /* Make gallery items reveal children too */
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('mouseenter', ()=> item.classList.add('hover'));
+      item.addEventListener('mouseleave', ()=> item.classList.remove('hover'));
+    });
+
+    /* Simple keyboard shortcuts (non-intrusive) */
+    document.addEventListener('keydown', (e) => {
+      // t = top, / = focus search (if you add one later)
+      if(e.key === 't' || e.key === 'T') window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    /* Accessibility: focus outlines for keyboard users */
+    function handleFirstTab(e) {
+      if(e.key === 'Tab'){
+        document.documentElement.classList.add('show-focus-outline');
+        window.removeEventListener('keydown', handleFirstTab);
+      }
+    }
+    window.addEventListener('keydown', handleFirstTab);
+
+    /* Small enhancement: when modal is opened by existing code (leaderboard/explain), trap focus lightly */
+    function trapFocus(modal){
+      if(!modal) return;
+      const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      const first = focusable[0], last = focusable[focusable.length-1];
+      modal.addEventListener('keydown', (e) => {
+        if(e.key === 'Tab'){
+          if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+          else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+        }
+      });
+    }
+    const lbModal = document.getElementById('leaderboard-modal');
+    const explainModal = document.getElementById('explain-modal');
+    if(lbModal) trapFocus(lbModal);
+    if(explainModal) trapFocus(explainModal);
+
+    /* Simple conflict-safe init for components added earlier */
+    // If your original code added listeners with the same names, we avoid re-declaring globals.
+    // All added logic is local to this IIFE.
+
+  })();
+</script>
+
+<!-- ===========================
+     ADDED FEATURES END
+     =========================== -->
+
+<script>
+  @keyframes heroShimmer {
+    0%   { left: -100%; }
+    100% { left: 100%; }
+  }
+  @keyframes cardShimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  @keyframes float {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</script>
+</body>
+</html>

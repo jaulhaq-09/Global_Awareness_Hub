@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Glassmorphism Sign In/Sign Up</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom background for a modern, deep glassmorphism feel */
+        .bg-abstract {
+            background: linear-gradient(135deg, #4c007a 0%, #0a004c 50%, #7d0033 100%);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        // Custom keyframe for a subtle pulse/loading effect
+                        pulseCustom: {
+                            '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(0.98)' },
+                        },
+                        // Custom keyframe for message box entry
+                        fadeInUp: {
+                            '0%': { opacity: 0, transform: 'translateY(10px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        'pulse-custom': 'pulseCustom 1.5s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.3s ease-out',
+                    }
+                }
+            }
+        }
+
+        /**
+         * Switches the visible form between 'login' and 'signup' using smooth transitions.
+         * @param {string} mode - 'login' or 'signup'
+         */
+        function switchMode(mode) {
+            const loginCard = document.getElementById('login-card');
+            const signupCard = document.getElementById('signup-card');
+            
+            // Hide message box on view switch
+            hideMessage();
+
+            // Utility function to apply transition classes
+            const toggleVisibility = (card, show) => {
+                if (show) {
+                    // Make visible: high opacity, reset transform
+                    card.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                    card.classList.add('opacity-100', 'translate-y-0');
+                    card.style.zIndex = '10'; // Bring active card to the front
+                } else {
+                    // Make invisible: low opacity, slide down slightly, ignore pointer events
+                    card.classList.remove('opacity-100', 'translate-y-0');
+                    card.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                    card.style.zIndex = '0'; // Send inactive card to the back
+                }
+            };
+
+            if (mode === 'login') {
+                toggleVisibility(signupCard, false);
+                toggleVisibility(loginCard, true);
+            } else {
+                toggleVisibility(loginCard, false);
+                toggleVisibility(signupCard, true);
+            }
+        }
+
+        /**
+         * Displays a custom error message.
+         * @param {string} message - The message content.
+         * @param {boolean} showSignupButton - Whether to include a "Sign Up" action button.
+         */
+        function showMessage(message, showSignupButton) {
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
+            const signupButton = document.getElementById('message-signup-btn');
+
+            messageText.textContent = message;
+            
+            if (showSignupButton) {
+                signupButton.classList.remove('hidden');
+            } else {
+                signupButton.classList.add('hidden');
+            }
+
+            // Show the box with animation
+            messageBox.classList.remove('hidden');
+            messageBox.classList.add('animate-fade-in-up');
+        }
+
+        function hideMessage() {
+            document.getElementById('message-box').classList.add('hidden');
+        }
+
+
+        /**
+         * Simulates a login process, validating fields first.
+         * @param {HTMLButtonElement} button - The login button element.
+         */
+        function simulateLogin(button) {
+            const usernameInput = document.getElementById('login-username');
+            const passwordInput = document.getElementById('login-password');
+            
+            // Check for empty fields as a proxy for "not signed up"
+            if (usernameInput.value.trim() === '' || passwordInput.value.trim() === '') {
+                showMessage(
+                    "Error: Please enter both username and password. If you don't have an account, please Sign Up first!",
+                    true // Show Sign Up button
+                );
+                return;
+            }
+
+            // Proceed with loading animation if fields are filled
+            const originalText = 'Login';
+            
+            button.innerHTML = 'Authenticating...';
+            button.classList.add('animate-pulse-custom', 'cursor-not-allowed', 'opacity-80');
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('animate-pulse-custom', 'cursor-not-allowed', 'opacity-80');
+                button.disabled = false;
+                
+                showMessage("Success! Welcome back.", false);
+            }, 1500);
+        }
+
+        /**
+         * Simulates an account creation process with password validation.
+         * @param {HTMLButtonElement} button - The signup button element.
+         */
+        function simulateSignup(button) {
+            const originalText = 'Create Account';
+            
+            const emailInput = document.getElementById('signup-email').value.trim();
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            // 1. Basic Email check
+            if (emailInput === '') {
+                 showMessage("Please enter a valid email address.", false);
+                 return;
+            }
+            
+            // 2. Length check
+            if (password.length < 8) {
+                showMessage("Password is not valid: It must be at least 8 characters long.", false);
+                return;
+            }
+
+            // 3. Character and number mix check
+            const hasLetter = /[a-zA-Z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+
+            if (!hasLetter || !hasNumber) {
+                showMessage("Password is not valid: It must contain a mix of letters and numbers.", false);
+                return;
+            }
+
+            // 4. Confirmation check
+            if (password !== confirmPassword) {
+                showMessage("Error: Passwords do not match.", false);
+                return;
+            }
+            
+            // --- If all validation passes, start simulation ---
+            button.innerHTML = 'Registering...';
+            button.classList.add('animate-pulse-custom', 'cursor-not-allowed', 'opacity-80');
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('animate-pulse-custom', 'cursor-not-allowed', 'opacity-80');
+                button.disabled = false;
+                
+                showMessage("Account successfully created! Please log in now.", false);
+                // Automatically switch to login after successful registration (in a real app)
+                setTimeout(() => switchMode('login'), 1000); 
+            }, 2000);
+        }
+
+    </script>
+</head>
+<body class="bg-abstract h-screen flex items-center justify-center p-4 font-sans relative">
+
+    <!-- Custom Message Box (Error/Success) -->
+    <div id="message-box" class="fixed top-0 inset-x-0 mx-auto w-full max-w-sm mt-4 p-4 rounded-xl bg-red-800/80 backdrop-blur-md shadow-xl text-white z-50 hidden">
+        <div class="flex justify-between items-start">
+            <p id="message-text" class="text-sm font-medium mr-4"></p>
+            <button onclick="hideMessage()" class="text-white/80 hover:text-white transition duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+        <button id="message-signup-btn" onclick="switchMode('signup'); hideMessage();" class="mt-3 w-full py-2 rounded-lg bg-white text-red-800 font-semibold hover:bg-gray-100 transition hidden active:scale-95 text-sm">
+            Go to Sign Up
+        </button>
+    </div>
+
+    <!-- Container for both cards (to allow absolute positioning without disrupting flex center) -->
+    <div class="relative w-full max-w-md h-[450px]">
+        
+        <!-- Login Card -->
+        <div id="login-card" class="auth-card absolute w-full p-8 sm:p-10 rounded-3xl backdrop-blur-xl bg-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20 transform transition-all duration-700 ease-out 
+            opacity-100 translate-y-0 pointer-events-auto z-10"
+        >
+
+            <h2 class="text-3xl font-extrabold text-white mb-8 text-shadow-md">
+                Sign In
+            </h2>
+
+            <div class="inputBox mb-6">
+                <input 
+                    id="login-username"
+                    type="text" 
+                    placeholder="Username or Email"
+                    class="w-full p-4 rounded-xl border-0 bg-white/15 placeholder-white/70 text-white focus:outline-none focus:ring-4 focus:ring-purple-400/50 focus:bg-white/25 transition duration-300 text-lg shadow-inner"
+                >
+            </div>
+
+            <div class="inputBox mb-8">
+                <input 
+                    id="login-password"
+                    type="password" 
+                    placeholder="Password"
+                    class="w-full p-4 rounded-xl border-0 bg-white/15 placeholder-white/70 text-white focus:outline-none focus:ring-4 focus:ring-purple-400/50 focus:bg-white/25 transition duration-300 text-lg shadow-inner"
+                >
+            </div>
+
+            <div class="inputBox">
+                <button
+                    type="button"
+                    id="btn-login"
+                    onclick="simulateLogin(this)"
+                    class="w-full py-3.5 rounded-xl bg-purple-600 text-white font-bold text-xl cursor-pointer hover:bg-purple-700 transition duration-300 shadow-2xl shadow-purple-900/60 focus:outline-none focus:ring-4 focus:ring-purple-400/50 active:scale-95"
+                >
+                    Login
+                </button>
+            </div>
+
+            <!-- Links Group -->
+            <div class="group mt-6 flex justify-between">
+                <a href="#" onclick="showMessage('This feature is not implemented in the demo.', false); return false;" class="text-sm text-white/70 hover:text-white hover:underline transition duration-200 active:scale-[0.98] transform">
+                    Forgot Password?
+                </a>
+                <a href="#" onclick="switchMode('signup'); return false;" class="text-sm text-white hover:text-white hover:underline font-semibold transition duration-200 active:scale-[0.98] transform">
+                    Create Account
+                </a>
+            </div>
+        </div>
+
+        <!-- Sign Up Card (Initially Hidden/Inactive) -->
+        <div id="signup-card" class="auth-card absolute w-full p-8 sm:p-10 rounded-3xl backdrop-blur-xl bg-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20 transform transition-all duration-700 ease-out 
+            opacity-0 translate-y-4 pointer-events-none z-0"
+        >
+
+            <h2 class="text-3xl font-extrabold text-white mb-8 text-shadow-md">
+                Create Your Account
+            </h2>
+            
+            <div class="inputBox mb-6">
+                <input 
+                    id="signup-email"
+                    type="email" 
+                    placeholder="Email Address"
+                    class="w-full p-4 rounded-xl border-0 bg-white/15 placeholder-white/70 text-white focus:outline-none focus:ring-4 focus:ring-purple-400/50 focus:bg-white/25 transition duration-300 text-lg shadow-inner"
+                >
+            </div>
+            
+            <!-- Password Input with validation helper text -->
+            <div class="inputBox mb-2">
+                <input 
+                    id="signup-password"
+                    type="password" 
+                    placeholder="Choose Password (Min 8, letters & numbers)"
+                    class="w-full p-4 rounded-xl border-0 bg-white/15 placeholder-white/70 text-white focus:outline-none focus:ring-4 focus:ring-purple-400/50 focus:bg-white/25 transition duration-300 text-lg shadow-inner"
+                >
+            </div>
+            <p class="text-xs text-white/60 mb-6 text-left ml-2">Must be 8+ chars, with letters and numbers.</p>
+
+
+            <div class="inputBox mb-8">
+                <input 
+                    id="signup-confirm-password"
+                    type="password" 
+                    placeholder="Confirm Password"
+                    class="w-full p-4 rounded-xl border-0 bg-white/15 placeholder-white/70 text-white focus:outline-none focus:ring-4 focus:ring-purple-400/50 focus:bg-white/25 transition duration-300 text-lg shadow-inner"
+                >
+            </div>
+
+            <div class="inputBox">
+                <button
+                    type="button"
+                    id="btn-signup"
+                    onclick="simulateSignup(this)"
+                    class="w-full py-3.5 rounded-xl bg-green-500 text-white font-bold text-xl cursor-pointer hover:bg-green-600 transition duration-300 shadow-2xl shadow-green-900/60 focus:outline-none focus:ring-4 focus:ring-green-400/50 active:scale-95"
+                >
+                    Create Account
+                </button>
+            </div>
+
+            <!-- Links Group -->
+            <div class="group mt-6 text-center">
+                <span class="text-sm text-white/70">
+                    Already have an account? 
+                </span>
+                <a href="#" onclick="switchMode('login'); return false;" class="text-sm text-white hover:text-white hover:underline font-semibold transition duration-200 active:scale-[0.98] transform ml-1">
+                    Sign In
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
